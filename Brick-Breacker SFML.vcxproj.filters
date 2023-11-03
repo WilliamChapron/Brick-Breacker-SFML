@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Fichiers de ressources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Fichiers de ressources\src">
+      <UniqueIdentifier>{d45e84ed-cf1e-497c-834c-c279f774b264}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\src\Managers">
+      <UniqueIdentifier>{ca2afc3e-fde7-436a-9e99-9a01446e0015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\src\Player">
+      <UniqueIdentifier>{13a435a6-5fa2-40b4-8bf7-a5fdf2f8896c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fichiers de ressources\src\GameObjects">
+      <UniqueIdentifier>{a4d4e2fb-c004-4ccd-b8bf-e528a96d4699}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Fichiers de ressources\src</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="RendererManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="LevelManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ball.cpp">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Paddle.cpp">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Brick.cpp">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Fichiers de ressources\src\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="Border.cpp">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="RendererManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="CollisionManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObject.h">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ball.h">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Paddle.h">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Brick.h">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Fichiers de ressources\src\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="Border.h">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
