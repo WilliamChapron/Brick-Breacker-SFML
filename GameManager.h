@@ -2,6 +2,7 @@
 
 class GameManager {
 public:
+    // Constructor
     GameManager();
     ~GameManager();
 
@@ -12,14 +13,19 @@ public:
     float GetDeltaTime() const;
 
 private:
-    float deltaTime;         
-    float gameSpeed;         
-    bool isGamePaused;       
-    float realTimeElapsed;   
-    float gameTimeElapsed;   
+    // Manage Time Var
+    float _deltaTime;         
+    float _gameSpeed;         
+    bool _isGamePaused;       
+    float _realTimeElapsed;   
+    float _gameTimeElapsed;   
 
-    // refresh interval (FPS)
-    float targetFrameTime;
+    // Refresh Interval (FPS)
+    float _targetFrameTime;
 
+    // Score
+    int _score;
+
+    // 
     void UpdateDeltaTime();  
 };

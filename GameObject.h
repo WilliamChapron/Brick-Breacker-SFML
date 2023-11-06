@@ -4,6 +4,7 @@
 
 class GameObject {
 public:
+    // Constructor
     GameObject();
     GameObject(float initialX, float initialY);
     ~GameObject();

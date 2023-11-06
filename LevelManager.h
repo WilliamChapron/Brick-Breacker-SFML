@@ -2,6 +2,7 @@
 
 class LevelManager {
 public:
+    // Constructor
     LevelManager();
     ~LevelManager();
 

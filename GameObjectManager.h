@@ -5,6 +5,7 @@
 
 class GameObjectManager {
 public:
+    // Constructor
     GameObjectManager();
     ~GameObjectManager();
 
@@ -19,5 +20,5 @@ public:
     void Clear();
 
 private:
-    std::vector<GameObject*> objects;  
+    std::vector<GameObject*> objvect_objects;  
 };

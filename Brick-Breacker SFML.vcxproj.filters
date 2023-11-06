@@ -49,9 +49,6 @@
     <ClCompile Include="Brick.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Fichiers de ressources\src\Player</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectManager.cpp">
       <Filter>Fichiers de ressources\src\Managers</Filter>
     </ClCompile>
@@ -92,9 +89,6 @@
     </ClInclude>
     <ClInclude Include="Brick.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Fichiers de ressources\src\Player</Filter>
     </ClInclude>
     <ClInclude Include="GameObjectManager.h">
       <Filter>Fichiers de ressources\src\Managers</Filter>

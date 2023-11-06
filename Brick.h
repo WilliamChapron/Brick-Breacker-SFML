@@ -3,6 +3,7 @@
 
 class Brick : public GameObject {
 public:
+    // Constructor
     Brick();
     Brick(float initialX, float initialY, float width, float height);
 
@@ -16,9 +17,9 @@ public:
     int GetHealth() const;
 
 private:
-    int health;
-    float width;
-    float height;
+    int _health;
+    float _width;
+    float _height;
 
     // TO THINK - Brick Color
 };

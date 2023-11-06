@@ -5,6 +5,7 @@
 
 class Entity : public GameObject {
 public:
+    // Constructor
     Entity();
     Entity(float initialX, float initialY);
 
