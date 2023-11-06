@@ -55,7 +55,7 @@
     <ClCompile Include="Border.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Entity.cpp">
+    <ClCompile Include="PhysicalGameObject.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
     <ClCompile Include="TextureManager.cpp">

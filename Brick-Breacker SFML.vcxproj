@@ -138,7 +138,7 @@
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
-    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="PhysicalGameObject.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
     <ClCompile Include="GameObjectManager.cpp" />

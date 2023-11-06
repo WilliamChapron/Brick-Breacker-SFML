@@ -6,7 +6,7 @@ class GameObject {
 public:
     // Constructor
     GameObject();
-    GameObject(float initialX, float initialY);
+    GameObject(float initialX, float initialY, int size);
     ~GameObject();
 
     virtual void Initialize(float initialX, float initialY);
