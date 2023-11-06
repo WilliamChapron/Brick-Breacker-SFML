@@ -1,25 +1,28 @@
 #pragma once
 
-#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
 
 class InputManager {
 public:
     // Constructor
     InputManager();
+    // Destructor
     ~InputManager();
 
 
-    void Update();
 
 
-    bool IsMouseLeftButtonPressed() const;
+    void Update(sf::RenderWindow* window);
 
-    sf::Vector2i GetMouseMovement() const;     // Get mouse move from previous mouse position
+
+    bool CheckMouseLeftButtonPressed();
+
+    sf::Vector2i GetMouseMovement();     // Get mouse move from previous mouse position
 
 
 
 private:
-    sf::Event sf_event;
+    sf::Event* sf_event;
     bool _isMouseLeftPressed;
     sf::Vector2i _previousMousePosition;
 };

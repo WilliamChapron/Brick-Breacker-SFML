@@ -22,5 +22,5 @@ public:
     void ClearTextures();
 
 private:
-    std::map<int, sf::Texture> kvmap_textures; // map key value
+    std::map<int, sf::Texture> map_textures; // map key value   playerScore_
 };

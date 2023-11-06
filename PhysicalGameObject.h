@@ -7,11 +7,11 @@ class PhysicalGameObject : public GameObject {
 public:
     // Constructor
     PhysicalGameObject();
-    PhysicalGameObject(float initialX, float initialY);
+    PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH);
 
-    void Initialize(float initialX, float initialY, int sizeW, int sizeH) override;
+    //void Initialize(float initialX, float initialY, int sizeW, int sizeH) override;
 
-    void Move(float dx, float dy);
+    void Move();
 
     /*
         Get

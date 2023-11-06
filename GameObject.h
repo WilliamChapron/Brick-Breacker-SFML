@@ -1,6 +1,6 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>s
+#include <SFML/Graphics.hpp>
 
 class GameObject {
 public:
@@ -25,19 +25,19 @@ public:
         Get
     */
     sf::Vector2f GetPosition() const;
-
     sf::RectangleShape* GetShape();
 
-
-
-
-private:
+// Accessible by child
+protected:
     sf::RectangleShape* ref_shape;
     // Size
     int _height;
     int _width;
-
     sf::Vector2f _position;
+
+
+private:
+
 };
 
 
