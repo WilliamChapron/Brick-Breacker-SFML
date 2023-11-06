@@ -61,6 +61,9 @@
     <ClCompile Include="Entity.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="TextureManager.cpp">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureManager.h">
+      <Filter>Fichiers de ressources\src\Managers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

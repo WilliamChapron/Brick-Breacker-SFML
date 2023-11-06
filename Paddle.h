@@ -14,7 +14,7 @@ public:
     void SetWidth(float width);
     float GetWidth() const;
 
-    void CheckCollision() override;
+    void CheckRectCollide(Entity& object, Entity& object2); override;
 
 private:
     float width;
