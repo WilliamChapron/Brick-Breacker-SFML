@@ -27,6 +27,14 @@ public:
     sf::Vector2f GetPosition() const;
     sf::RectangleShape* GetShape();
 
+
+    // 2d Transform
+    void SetScale(float scaleX, float scaleY);
+    sf::Vector2f GetScale() const;
+
+    void SetRotation(float angle);
+    int GetRotation() const;
+
 // Accessible by child
 protected:
     sf::RectangleShape* ref_shape;

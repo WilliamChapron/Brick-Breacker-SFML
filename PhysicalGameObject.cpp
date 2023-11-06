@@ -46,3 +46,4 @@ void PhysicalGameObject::SetOrientation(float x, float y) {
 void PhysicalGameObject::SetSpeed(int speed) {
     _speed = speed;
 }
+

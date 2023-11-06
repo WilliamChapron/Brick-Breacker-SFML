@@ -26,6 +26,7 @@ public:
     void SetSpeed(int speed);
 
 
+
 protected:
     int _speed; 
     sf::Vector2f _orientation;

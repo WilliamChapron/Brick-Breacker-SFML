@@ -1,5 +1,4 @@
 #include "GameObject.h"
-#include <SFML/Graphics.hpp>
 
 GameObject::GameObject() {
     Initialize(0.0f, 0.0f, 1, 1);
@@ -44,4 +43,21 @@ void GameObject::SetPosition(float x, float y) {
 
 sf::Vector2f GameObject::GetPosition() const {
     return _position;
+}
+
+
+void GameObject::SetScale(float scaleX, float scaleY) {
+    ref_shape->setScale(scaleX, scaleY);
+}
+
+sf::Vector2f GameObject::GetScale() const {
+    return ref_shape->getScale(); 
+}
+
+void GameObject::SetRotation(float angle) {
+    ref_shape->setRotation(angle);
+}
+
+int GameObject::GetRotation() const {
+    return ref_shape->getRotation();
 }

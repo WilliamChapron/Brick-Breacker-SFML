@@ -43,14 +43,7 @@ int main(int argc, char** argv)
     //GameLoop
     while (window->isOpen())
     {
-        ////EVENT
-        //sf::Event oEvent;
-        //while (oWindow.pollEvent(oEvent))
-        //{
-        //    if (oEvent.type == sf::Event::Closed)
-        //        oWindow.close();
-        //}
-
+        
 
         //UPDATE
 
@@ -60,8 +53,13 @@ int main(int argc, char** argv)
         inputManager.Update(window);
         /*std::cout << check << std::endl;*/
 
-        /*object.Move();
-        oWindow.draw(*object.GetShape());*/
+        object.Move();
+        //object.SetRotation(65);
+        //std::cout << object.GetRotation() << std::endl;
+        //object.SetScale(30,30);
+
+
+        window->draw(*object.GetShape());
 
 
         window->display();
