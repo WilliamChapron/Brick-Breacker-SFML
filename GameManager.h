@@ -1,31 +1,40 @@
 #pragma once
 
-class GameManager {
-public:
-    // Constructor
-    GameManager();
-    ~GameManager();
+namespace GameNamespace {
+    class GameManager {
+    public:
+        // Constructor
+        GameManager();
+        ~GameManager();
 
-    void Initialize();
-    void StartGame();
-    void Update();
+        void Initialize();
+        void StartGame();
+        void Update();
 
-    float GetDeltaTime() const;
+        float GetDeltaTime() const;
 
-private:
-    // Manage Time Var
-    float _deltaTime;         
-    float _gameSpeed;         
-    bool _isGamePaused;       
-    float _realTimeElapsed;   
-    float _gameTimeElapsed;   
+    private:
 
-    // Refresh Interval (FPS)
-    float _targetFrameTime;
+        // #TODO - Delta time system accessible everywhere 
+        
+        // Manage Time Var
+        float _deltaTime;
+        float _gameSpeed;
+        bool _isGamePaused;
+        float _realTimeElapsed;
+        float _gameTimeElapsed;
 
-    // Score
-    int _score;
+        // Refresh Interval (FPS)
+        float _targetFrameTime;
 
-    // 
-    void UpdateDeltaTime();  
-};
+        // Score
+        int _score;
+
+        // #TODO - Create The logic
+        void UpdateDeltaTime();
+    };
+}
+
+
+
+using namespace GameNamespace; // Make the GameManager class and its members accessible without prefixing
