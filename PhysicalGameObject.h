@@ -22,8 +22,8 @@ public:
     /*
         Set
     */
-    void SetOrientation();
-    void SetSpeed();
+    void SetOrientation(float x, float y);
+    void SetSpeed(int speed);
 
 
 protected:
