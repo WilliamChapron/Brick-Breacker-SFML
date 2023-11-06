@@ -96,7 +96,7 @@
     <ClInclude Include="Border.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
+    <ClInclude Include="PhysicalGameObject.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClInclude>
     <ClInclude Include="TextureManager.h">

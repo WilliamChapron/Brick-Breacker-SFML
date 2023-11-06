@@ -154,7 +154,7 @@
     <ClInclude Include="Border.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="CollisionManager.h" />
-    <ClInclude Include="Entity.h" />
+    <ClInclude Include="PhysicalGameObject.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameObjectManager.h" />
