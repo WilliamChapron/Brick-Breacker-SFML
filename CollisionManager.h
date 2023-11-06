@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Entity.h" 
+#include "PhysicalGameObject.h" 
 
 class CollisionManager {
 public:
@@ -9,8 +9,8 @@ public:
 
     void Initialize();
 
-    void CheckRectCollide(Entity& object, Entity& object2);
-    void CheckCircleCollide(Entity& object, Entity& object2);
+    void RectCollision(PhysicalGameObject& object, PhysicalGameObject& object2);
+    //bool CircleRectCollision(PhysicalGameObject& object, PhysicalGameObject& object2);
 
 
     // TOTHINK - Chunk

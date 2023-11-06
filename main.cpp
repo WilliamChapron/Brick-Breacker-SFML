@@ -26,7 +26,10 @@
 #include <SFML/Graphics.hpp>
 #include "GameObject.h"
 #include "PhysicalGameObject.h"
+#include "Ball.h"
+#include "Canon.h"
 #include "InputManager.h"
+#include "CollisionManager.h"
 #include <iostream>
 
 
@@ -36,7 +39,11 @@ int main(int argc, char** argv)
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML");
 
 
-    PhysicalGameObject object(50, 50, 50, 50);
+    Canon canon(150, 150, 50, 50);
+    Ball ball(50, 50, 50);
+
+    CollisionManager collisionManager;
+
 
     InputManager inputManager;
 
@@ -53,13 +60,18 @@ int main(int argc, char** argv)
         inputManager.Update(window);
         /*std::cout << check << std::endl;*/
 
-        object.Move();
+        /*object.Move();*/
+
         //object.SetRotation(65);
         //std::cout << object.GetRotation() << std::endl;
+
         //object.SetScale(30,30);
+        
+        std::cout << collisionManager.CircleRectCollision(canon,ball) << std::endl;
 
 
-        window->draw(*object.GetShape());
+        window->draw(*canon.GetShape());
+        window->draw(*ball.GetShape());
 
 
         window->display();

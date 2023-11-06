@@ -6,16 +6,18 @@ PhysicalGameObject::PhysicalGameObject() : GameObject() {
     _orientation = sf::Vector2f(0, 0);
 }
 
-//void PhysicalGameObject::Initialize(float initialX, float initialY, int sizeW, int sizeH) {
-//    
-//
-//}
-
 
 PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH) : GameObject(initialX, initialY, sizeW, sizeH) {
     _speed = 1;
     _orientation = sf::Vector2f(0.01, 0.01);
 }
+
+
+PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int radius) : GameObject(initialX, initialY, radius) {
+    _speed = 1;
+    _orientation = sf::Vector2f(0.01, 0.01);
+}
+
 
 
 void PhysicalGameObject::Move() { // #TODO - Add DeltaTime
@@ -25,8 +27,8 @@ void PhysicalGameObject::Move() { // #TODO - Add DeltaTime
 
     //std::cout << "sdsd" << std::endl;
 
-    if (ref_shape != nullptr) { 
-        ref_shape->setPosition(_position); 
+    if (ptr_shape != nullptr) { 
+        ptr_shape->setPosition(_position); 
     }
 }
 

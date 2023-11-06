@@ -13,6 +13,4 @@ public:
     void Render();
 
 private:
-    float _width;
-    float _height;
 };

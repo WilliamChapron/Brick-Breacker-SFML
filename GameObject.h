@@ -6,26 +6,36 @@ class GameObject {
 public:
     // Constructor
     GameObject();
+    // Rect Construct
     GameObject(float initialX, float initialY, int sizeW, int sizeH);
+    // Circle Construct
+    GameObject(float initialX, float initialY, int radius);
     // Destructor
     ~GameObject();
 
     // Base Methods
-    virtual void Initialize(float initialX, float initialY, int sizeW, int sizeH);
+    virtual void Initialize(float initialX, float initialY, int sizeW, int sizeH, sf::Shape* shape);
     virtual void Update();
     virtual void Render();
 
 
-    /*
-        Set
-    */
-    void SetPosition(float x, float y);
 
     /*
         Get
     */
     sf::Vector2f GetPosition() const;
-    sf::RectangleShape* GetShape();
+    sf::Shape* GetShape();
+    int GetWidth();
+    int GetHeight();
+
+
+    /*
+    Set
+    */
+    void SetPosition(float x, float y);
+    int SetWidth();
+    int SetHeight();
+
 
 
     // 2d Transform
@@ -37,12 +47,11 @@ public:
 
 // Accessible by child
 protected:
-    sf::RectangleShape* ref_shape;
+    sf::Shape* ptr_shape;
     // Size
     int _height;
     int _width;
     sf::Vector2f _position;
-
 
 private:
 

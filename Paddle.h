@@ -1,6 +1,6 @@
 #pragma once
 #include "GameObject.h"
-#include "Entity.h"
+#include "PhysicalGameObject.h"
 
 class Paddle : public GameObject {
 public:
@@ -20,8 +20,6 @@ public:
     //void CheckRectCollide(Entity& object, Entity& object2); override;
 
 private:
-    float _width;
-    float _height;
 
 };
 

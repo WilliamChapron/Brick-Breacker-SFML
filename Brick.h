@@ -18,8 +18,6 @@ public:
 
 private:
     int _health;
-    float _width;
-    float _height;
 
     // TO THINK - Brick Color
 };

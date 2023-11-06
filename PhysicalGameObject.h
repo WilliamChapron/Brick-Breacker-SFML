@@ -8,6 +8,7 @@ public:
     // Constructor
     PhysicalGameObject();
     PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH);
+    PhysicalGameObject(float initialX, float initialY, int radius);
 
     //void Initialize(float initialX, float initialY, int sizeW, int sizeH) override;
 
@@ -28,6 +29,7 @@ public:
 
 
 protected:
+    int _moveState;
     int _speed; 
     sf::Vector2f _orientation;
 };

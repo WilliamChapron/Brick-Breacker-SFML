@@ -1,17 +1,15 @@
 #pragma once
-#include "GameObject.h"
 
-class Ball : public GameObject {
+#include "PhysicalGameObject.h"
+
+class Ball : public PhysicalGameObject {
 public:
     // Constructor
     Ball();
     Ball(float initialX, float initialY, float radius);
     ~Ball();
 
-    void Initialize(float initialX, float initialY, float radius);
-
 private:
-    int _radius;
 };
 
 

@@ -1,32 +1,41 @@
 #include "GameObject.h"
 
 GameObject::GameObject() {
-    Initialize(0.0f, 0.0f, 1, 1);
+    Initialize(0.0f, 0.0f, 1, 1, nullptr);
 }
 
+// Rect Construct
 GameObject::GameObject(float initialX, float initialY, int sizeW, int sizeH) {
-    Initialize(initialX, initialY, sizeW, sizeH);
+    sf::RectangleShape* newShape = new sf::RectangleShape(sf::Vector2f(sizeW, sizeH));
+    Initialize(initialX, initialY, sizeW, sizeH, newShape);
 }
+
+GameObject::GameObject(float initialX, float initialY, int radius) {
+    sf::CircleShape* newShape = new sf::CircleShape(radius,radius);
+    Initialize(initialX, initialY, radius, radius, newShape);
+
+}
+
 
 GameObject::~GameObject() {
 }
 
-void GameObject::Initialize(float initialX, float initialY, int sizeW, int sizeH) {
+void GameObject::Initialize(float initialX, float initialY, int sizeW, int sizeH, sf::Shape* shape) {
     _position.x = initialX;
     _position.y = initialY;
     _width = sizeW;
     _height = sizeH;
 
-    sf::RectangleShape* newShape = new sf::RectangleShape(sf::Vector2f(sizeW, sizeH));
-    newShape->setFillColor(sf::Color::Blue);
-    newShape->setPosition(initialX, initialY);
 
-    ref_shape = newShape;
+    shape->setFillColor(sf::Color::Blue);
+    shape->setPosition(initialX, initialY);
+
+    ptr_shape = shape;
 
 }
 
-sf::RectangleShape* GameObject::GetShape() {
-    return ref_shape;
+sf::Shape* GameObject::GetShape() {
+    return ptr_shape;
 }
 
 
@@ -47,17 +56,17 @@ sf::Vector2f GameObject::GetPosition() const {
 
 
 void GameObject::SetScale(float scaleX, float scaleY) {
-    ref_shape->setScale(scaleX, scaleY);
+    ptr_shape->setScale(scaleX, scaleY);
 }
 
 sf::Vector2f GameObject::GetScale() const {
-    return ref_shape->getScale(); 
+    return ptr_shape->getScale();
 }
 
 void GameObject::SetRotation(float angle) {
-    ref_shape->setRotation(angle);
+    ptr_shape->setRotation(angle);
 }
 
 int GameObject::GetRotation() const {
-    return ref_shape->getRotation();
+    return ptr_shape->getRotation();
 }
