@@ -40,14 +40,18 @@ int main(int argc, char** argv)
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML");
 
 
-    Canon canon(150, 150, 150, 150);
-    Ball ball(100, 100, 50);
-    Ball ball2(25, 105, 50);
+    Canon canon(400, 250, 200, 100);
+    //Canon canon2(300, 300, 150, 150);
+    Ball ball(150, 200, 200);
+    //Ball ball2(25, 105, 50);
 
     CollisionManager collisionManager;
 
 
     InputManager inputManager;
+
+    //std::cout << collisionManager.RectCollision(canon, canon2) << std::endl;
+    //std::cout << collisionManager.CircleRectCollision(ball, canon) << std::endl;
 
     //GameLoop
     while (window->isOpen())
@@ -69,12 +73,13 @@ int main(int argc, char** argv)
 
         //object.SetScale(30,30);
         
-        /*std::cout << collisionManager.CircleRectCollision(canon,ball) << std::endl;*/
 
+        
 
         window->draw(*canon.GetShape());
+        //window->draw(*canon2.GetShape());
         window->draw(*ball.GetShape());
-        window->draw(*ball2.GetShape());
+        //window->draw(*ball2.GetShape());
 
 
         window->display();

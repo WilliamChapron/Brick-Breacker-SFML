@@ -9,7 +9,7 @@ public:
 
     void Initialize();
 
-    void RectCollision(PhysicalGameObject& object, PhysicalGameObject& object2);
+    bool RectCollision(PhysicalGameObject& rect1, PhysicalGameObject& rect2);
     bool CircleRectCollision(PhysicalGameObject& circle, PhysicalGameObject& rect);
 
 
