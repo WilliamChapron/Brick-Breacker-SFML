@@ -21,9 +21,8 @@ namespace GameNamespace {
     }
 
     void GameManager::Update() {
-        sf::Time frameTime = sf_clock->restart();
-        _deltaTime = frameTime.asSeconds();
-        /*std::cout << _deltaTime << std::endl;*/
+        _deltaTime = sf_clock->restart().asSeconds();
+        /*std::cout << GameNamespace::GameManager::GetDeltaTime() << std::endl;*/
 
         // return time elapsed since last update and convert it in second with as second
         // Game Pause

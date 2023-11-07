@@ -61,12 +61,10 @@ int main(int argc, char** argv)
         //UPDATE
 
         //DRAW
-        window->clear();
-
         inputManager.Update(window);
         /*std::cout << check << std::endl;*/
 
-        /*object.Move();*/
+        canon.Move();
 
         //object.SetRotation(65);
         //std::cout << object.GetRotation() << std::endl;
@@ -75,6 +73,8 @@ int main(int argc, char** argv)
         
 
         
+
+        window->clear();
 
         window->draw(*canon.GetShape());
         //window->draw(*canon2.GetShape());

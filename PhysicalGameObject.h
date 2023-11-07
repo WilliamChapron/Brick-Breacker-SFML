@@ -2,6 +2,7 @@
 
 #include "GameObject.h" 
 #include <SFML/Graphics.hpp>
+#include "GameManager.h"
 
 class PhysicalGameObject : public GameObject {
 public:
