@@ -31,6 +31,7 @@
 #include "InputManager.h"
 #include "CollisionManager.h"
 #include <iostream>
+#include "GameManager.h"
 
 
 int main(int argc, char** argv)
@@ -39,8 +40,9 @@ int main(int argc, char** argv)
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML");
 
 
-    Canon canon(150, 150, 50, 50);
-    Ball ball(50, 50, 50);
+    Canon canon(150, 150, 150, 150);
+    Ball ball(100, 100, 50);
+    Ball ball2(25, 105, 50);
 
     CollisionManager collisionManager;
 
@@ -50,7 +52,7 @@ int main(int argc, char** argv)
     //GameLoop
     while (window->isOpen())
     {
-        
+        GameNamespace::GameManager::Update();
 
         //UPDATE
 
@@ -67,11 +69,12 @@ int main(int argc, char** argv)
 
         //object.SetScale(30,30);
         
-        std::cout << collisionManager.CircleRectCollision(canon,ball) << std::endl;
+        /*std::cout << collisionManager.CircleRectCollision(canon,ball) << std::endl;*/
 
 
         window->draw(*canon.GetShape());
         window->draw(*ball.GetShape());
+        window->draw(*ball2.GetShape());
 
 
         window->display();

@@ -54,6 +54,20 @@ sf::Vector2f GameObject::GetPosition() const {
     return _position;
 }
 
+int GameObject::GetWidth() {
+    return _width;
+}
+
+int GameObject::GetHeight() {
+    return _height;
+}
+
+
+void GameObject::SetSize(int width, int height) {
+    _width = width;
+    _height = height;
+}
+
 
 void GameObject::SetScale(float scaleX, float scaleY) {
     ptr_shape->setScale(scaleX, scaleY);

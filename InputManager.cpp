@@ -21,7 +21,7 @@ void InputManager::Update(sf::RenderWindow* window) {
             std::cout << "left click" << std::endl;
         }
         sf::Vector2i mouseMovement = GetMouseMovement();
-        std::cout << mouseMovement.x << ":"  << mouseMovement.y << std::endl;
+        /*std::cout << mouseMovement.x << ":"  << mouseMovement.y << std::endl;*/
 
 
         

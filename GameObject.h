@@ -33,8 +33,7 @@ public:
     Set
     */
     void SetPosition(float x, float y);
-    int SetWidth();
-    int SetHeight();
+    void SetSize(int width, int height);
 
 
 

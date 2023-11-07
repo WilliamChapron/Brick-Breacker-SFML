@@ -10,7 +10,7 @@ public:
     void Initialize();
 
     void RectCollision(PhysicalGameObject& object, PhysicalGameObject& object2);
-    //bool CircleRectCollision(PhysicalGameObject& object, PhysicalGameObject& object2);
+    bool CircleRectCollision(PhysicalGameObject& circle, PhysicalGameObject& rect);
 
 
     // TOTHINK - Chunk
