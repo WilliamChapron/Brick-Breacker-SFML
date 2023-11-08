@@ -15,10 +15,6 @@
 // - To Think commentary : #TOTHINK - $
 // - To Do commentary : #TODO - $
 
-
-
-
-
 /*
     CODE STYLE DESCRIPTION
 */
@@ -38,17 +34,18 @@
 
 int main(int argc, char** argv) {
     RendererManager rendererManager(1000,1000);
-    GameObjectManager gameObjectManager;
+    GameObjectManager* gameObjectManager = new GameObjectManager;
     InputManager inputManager;      
     LevelManager levelManager;
 
-    levelManager.Initialize(gameObjectManager);
+    levelManager.Initialize();
+    levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());
 
 
     // GameLoop
     while (rendererManager.GetWindow()->isOpen()) {
         inputManager.Update(rendererManager.GetWindow());
-        std::vector<GameObject*> * entitiesAlive = gameObjectManager.GetAllObjects();
+        std::vector<GameObject*> * entitiesAlive = gameObjectManager->GetAllObjects();
         rendererManager.Update(entitiesAlive);
     }
 

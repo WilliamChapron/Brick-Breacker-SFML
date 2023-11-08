@@ -4,6 +4,8 @@
 
 RendererManager::RendererManager(int width, int height) {
     sf_window = new sf::RenderWindow(sf::VideoMode(width, height), "SFML Window");
+    _winWidth = width;
+    _winHeight = height;
 }
 
 RendererManager::~RendererManager() {

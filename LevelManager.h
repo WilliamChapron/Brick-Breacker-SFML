@@ -7,6 +7,9 @@
 #include <fstream> // Syntax file
 using json = nlohmann::json; // Using namespace
 
+// SFML
+#include <SFML/Graphics.hpp>
+
 
 
 struct Rect {
@@ -30,7 +33,7 @@ public:
     ~LevelManager();
 
     void Initialize();
-    void LoadLevel(GameObjectManager* gameObjectManager);
+    void LoadLevel(GameObjectManager* gameObjectManager, sf::RenderWindow* window);
     void Update();
 
 private:

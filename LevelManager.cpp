@@ -18,7 +18,7 @@ void LevelManager::Initialize()
 
 }
 
-void LevelManager::LoadLevel(GameObjectManager*gameObjectManager) 
+void LevelManager::LoadLevel(GameObjectManager* gameObjectManager, sf::RenderWindow* window)
 {
     if (_currentLevel = !0) {
         std::string filename = "Levels/level" + std::to_string(_currentLevel) + ".json";
@@ -38,18 +38,15 @@ void LevelManager::LoadLevel(GameObjectManager*gameObjectManager)
             bricks.push_back(brick);
         }
 
-        for (const Rect brick : bricks) {
-            std::cout << brick.x << std::endl;
-        }
+        // Get window size 
+        sf::Vector2u winSize = window->getSize();
 
-        Canon* canon1 = new Canon(100, 150, 200, 100, "Canon");
-        Canon* canon2 = new Canon(300, 250, 200, 100, "Canon");
-        Canon* canon3 = new Canon(500, 350, 200, 100, "Canon");
-        //Canon* canon2 = new Canon(400, 250, 200, 100, "Canon");
-        gameObjectManager.AddObject(canon1);
-        gameObjectManager.AddObject(canon2);
-        gameObjectManager.AddObject(canon3);
-        gameObjectManager.AddObject(canon3);
+        for (const Rect brick : bricks) {
+            Canon* canon1 = new Canon((winSize.x * brick.x)/100, (winSize.y * brick.y)/100, brick.width, brick.height, "Canon");
+            std::cout << winSize.x / brick.x << std::endl;
+            std::cout << winSize.y / brick.y << std::endl;
+            gameObjectManager->AddObject(canon1);
+        }
 
         _isLevelLoaded = true;
     }
