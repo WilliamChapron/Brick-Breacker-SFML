@@ -1,5 +1,7 @@
 ﻿#include "RendererManager.h"
 
+#include "GameObject.h"
+
 RendererManager::RendererManager(int width, int height) {
     sf_window = new sf::RenderWindow(sf::VideoMode(width, height), "SFML Window");
 }
@@ -20,7 +22,7 @@ void RendererManager::Draw(std::vector<GameObject*> * aliveObjects) {
     sf_window->clear();
 
     for (const GameObject* object : *aliveObjects) {
-        sf::Shape* shape = object->GetShape();
+        const sf::Shape* shape = object->GetShape();
         sf_window->draw(*shape);
     }
 

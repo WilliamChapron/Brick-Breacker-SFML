@@ -25,6 +25,7 @@ public:
     */
     sf::Vector2f GetPosition() const;
     sf::Shape* GetShape();
+    sf::Shape* GetShape() const;
     int GetWidth();
     int GetHeight();
 

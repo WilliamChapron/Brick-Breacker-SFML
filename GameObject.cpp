@@ -40,6 +40,11 @@ sf::Shape* GameObject::GetShape() {
 }
 
 
+sf::Shape* GameObject::GetShape() const {
+    return ptr_shape;
+}
+
+
 void GameObject::Update() {
 }
 

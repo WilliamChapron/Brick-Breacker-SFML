@@ -40,9 +40,9 @@ int main(int argc, char** argv) {
     GameObjectManager gameObjectManager;
     InputManager inputManager;      
 
-    Canon* canon1 = new Canon(400, 250, 200, 100, "Canon");
-    Canon* canon2 = new Canon(400, 250, 200, 100, "Canon");
-    Canon* canon3 = new Canon(400, 250, 200, 100, "Canon");
+    Canon* canon1 = new Canon(100, 150, 200, 100, "Canon");
+    Canon* canon2 = new Canon(300, 250, 200, 100, "Canon");
+    Canon* canon3 = new Canon(500, 350, 200, 100, "Canon");
     //Canon* canon2 = new Canon(400, 250, 200, 100, "Canon");
     gameObjectManager.AddObject(canon1);
     gameObjectManager.AddObject(canon2);
