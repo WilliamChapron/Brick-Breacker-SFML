@@ -8,8 +8,8 @@ class PhysicalGameObject : public GameObject {
 public:
     // Constructor
     PhysicalGameObject();
-    PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH);
-    PhysicalGameObject(float initialX, float initialY, int radius);
+    PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name);
+    PhysicalGameObject(float initialX, float initialY, int radius, std::string name);
 
     //void Initialize(float initialX, float initialY, int sizeW, int sizeH) override;
 

@@ -1,18 +1,18 @@
 #include "GameObject.h"
 
 GameObject::GameObject() {
-    Initialize(0.0f, 0.0f, 1, 1, nullptr);
+    Initialize(0.0f, 0.0f, 1, 1, "", nullptr);
 }
 
 // Rect Construct
-GameObject::GameObject(float initialX, float initialY, int sizeW, int sizeH) {
+GameObject::GameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name) {
     sf::RectangleShape* newShape = new sf::RectangleShape(sf::Vector2f(sizeW, sizeH));
-    Initialize(initialX, initialY, sizeW, sizeH, newShape);
+    Initialize(initialX, initialY, sizeW, sizeH, name, newShape);
 }
 
-GameObject::GameObject(float initialX, float initialY, int radius) {
+GameObject::GameObject(float initialX, float initialY, int radius, std::string name) {
     sf::CircleShape* newShape = new sf::CircleShape(radius,radius);
-    Initialize(initialX, initialY, radius, radius, newShape);
+    Initialize(initialX, initialY, radius, radius, name, newShape);
 
 }
 
@@ -20,11 +20,12 @@ GameObject::GameObject(float initialX, float initialY, int radius) {
 GameObject::~GameObject() {
 }
 
-void GameObject::Initialize(float initialX, float initialY, int sizeW, int sizeH, sf::Shape* shape) {
+void GameObject::Initialize(float initialX, float initialY, int sizeW, int sizeH, std::string name, sf::Shape* shape) {
     _position.x = initialX;
     _position.y = initialY;
     _width = sizeW;
     _height = sizeH;
+    _name = name;
 
 
     shape->setFillColor(sf::Color::Blue);
@@ -60,6 +61,10 @@ int GameObject::GetWidth() {
 
 int GameObject::GetHeight() {
     return _height;
+}
+
+std::string GameObject::GetName() const {
+    return _name;
 }
 
 

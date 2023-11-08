@@ -1,7 +1,9 @@
 #pragma once
 
-#include <vector>
+#include <iostream>
 #include "GameObject.h"  
+#include "RendererManager.h"  
+
 
 // TO DO
 
@@ -16,11 +18,17 @@ public:
 
     void RemoveObject(GameObject* object);
 
-    // Mettre à jour tous les objets de jeu
-    void Update(float deltaTime);
+    std::vector<GameObject*> * FindObjectsByName(std::string name);
+
+    std::vector<GameObject*> * GetAllObjects();
+
+
+    int GetObjectsNumber();
+
+    void Update();
 
     void Clear();
 
 private:
-    std::vector<GameObject*> objvect_objects;  
+    std::vector<GameObject*> * objvect_objects;  
 };

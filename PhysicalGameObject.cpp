@@ -7,13 +7,13 @@ PhysicalGameObject::PhysicalGameObject() : GameObject() {
 }
 
 
-PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH) : GameObject(initialX, initialY, sizeW, sizeH) {
+PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name) : GameObject(initialX, initialY, sizeW, sizeH, name) {
     _speed = 10;
     _orientation = sf::Vector2f(0, -1);
 }
 
 
-PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int radius) : GameObject(initialX, initialY, radius) {
+PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int radius, std::string name) : GameObject(initialX, initialY, radius, name) {
     _speed = 10;
     _orientation = sf::Vector2f(1, -1);
 }

@@ -4,7 +4,7 @@
 InputManager::InputManager() {
     _isMouseLeftPressed = false;
     _previousMousePosition = sf::Vector2i(0, 0);
-    sf::Event* newEvent = new sf::Event;
+    sf::Event* newEvent  = new sf::Event;
     sf_event = newEvent;
 }
 

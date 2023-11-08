@@ -5,12 +5,11 @@ class Canon : public PhysicalGameObject {
 public:
     // Constructor
     Canon();
-    Canon(float initialX, float initialY, float width, float height);
+    Canon(float initialX, float initialY, float width, float height, std::string name);
 
     // Destructor
     ~Canon();
 
-    void Initialize(float initialX, float initialY, float width, float height);
 
 
 private:

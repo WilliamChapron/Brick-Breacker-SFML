@@ -1,8 +1,8 @@
-/* 
+ /*
     ***********************
     CODE STYLE DESCRIPTION
     ***********************
-*/ 
+*/
 
 // - Pascal Case For Class 
 // - Pascal Case For Functions
@@ -23,67 +23,51 @@
     CODE STYLE DESCRIPTION
 */
 
-#include <SFML/Graphics.hpp>
 #include "GameObject.h"
 #include "PhysicalGameObject.h"
 #include "Ball.h"
 #include "Canon.h"
 #include "InputManager.h"
 #include "CollisionManager.h"
-#include <iostream>
 #include "GameManager.h"
+#include "GameObjectManager.h"
+#include "RendererManager.h"
+#include <iostream>
 
 
-int main(int argc, char** argv)
-{
-    //Création d'une fenêtre
-    sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(640, 480), "SFML");
+int main(int argc, char** argv) {
+    RendererManager rendererManager(1000,1000);
+    GameObjectManager gameObjectManager;
+    InputManager inputManager;      
+
+    Canon* canon1 = new Canon(400, 250, 200, 100, "Canon");
+    Canon* canon2 = new Canon(400, 250, 200, 100, "Canon");
+    Canon* canon3 = new Canon(400, 250, 200, 100, "Canon");
+    //Canon* canon2 = new Canon(400, 250, 200, 100, "Canon");
+    gameObjectManager.AddObject(canon1);
+    gameObjectManager.AddObject(canon2);
+    gameObjectManager.AddObject(canon3);
+    gameObjectManager.AddObject(canon3);
+    //gameObjectManager.RemoveObject(canon1);
+    //std::vector<GameObject*> object = gameObjectManager.FindObjectsByName("Canone");
 
 
-    Canon canon(400, 250, 200, 100);
-    //Canon canon2(300, 300, 150, 150);
-    Ball ball(150, 200, 200);
-    //Ball ball2(25, 105, 50);
+    //gameObjectManager.AddObject(canon2);
 
-    CollisionManager collisionManager;
-
-
-    InputManager inputManager;
-
-    //std::cout << collisionManager.RectCollision(canon, canon2) << std::endl;
-    //std::cout << collisionManager.CircleRectCollision(ball, canon) << std::endl;
-
-    //GameLoop
-    while (window->isOpen())
-    {
-        GameNamespace::GameManager::Update();
-
-        //UPDATE
-
-        //DRAW
-        inputManager.Update(window);
-        /*std::cout << check << std::endl;*/
-
-        canon.Move();
-
-        //object.SetRotation(65);
-        //std::cout << object.GetRotation() << std::endl;
-
-        //object.SetScale(30,30);
-        
-
-        
-
-        window->clear();
-
-        window->draw(*canon.GetShape());
-        //window->draw(*canon2.GetShape());
-        window->draw(*ball.GetShape());
-        //window->draw(*ball2.GetShape());
-
-
-        window->display();
+    // GameLoop
+    while (rendererManager.GetWindow()->isOpen()) {
+        inputManager.Update(rendererManager.GetWindow());
+        std::vector<GameObject*> * entitiesAlive = gameObjectManager.GetAllObjects();
+        rendererManager.Update(entitiesAlive);
+        // UPDATE
+        // 
+        // 
+        // DRAW
+        /*rendererManager.DrawObjects();*/
     }
+
+    //delete canon1;
+    //delete ball1;
 
     return 0;
 }

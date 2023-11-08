@@ -7,14 +7,14 @@ public:
     // Constructor
     GameObject();
     // Rect Construct
-    GameObject(float initialX, float initialY, int sizeW, int sizeH);
+    GameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name);
     // Circle Construct
-    GameObject(float initialX, float initialY, int radius);
+    GameObject(float initialX, float initialY, int radius, std::string name);
     // Destructor
     ~GameObject();
 
     // Base Methods
-    virtual void Initialize(float initialX, float initialY, int sizeW, int sizeH, sf::Shape* shape);
+    virtual void Initialize(float initialX, float initialY, int sizeW, int sizeH, std::string name, sf::Shape* shape);
     virtual void Update();
     virtual void Render();
 
@@ -27,6 +27,8 @@ public:
     sf::Shape* GetShape();
     int GetWidth();
     int GetHeight();
+
+    std::string GetName() const;
 
 
     /*
@@ -51,6 +53,9 @@ protected:
     int _height;
     int _width;
     sf::Vector2f _position;
+
+    // Name 
+    std::string _name;
 
 private:
 
