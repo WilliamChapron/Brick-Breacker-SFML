@@ -34,6 +34,13 @@ void PhysicalGameObject::Move() { // #TODO - Add DeltaTime
     }
 }
 
+void PhysicalGameObject::CollisionOnEnter() { // Is call when collide on 
+
+}
+void PhysicalGameObject::CollisionOnExit() { // Is call when collide was on and pass off
+
+}
+
 sf::Vector2f PhysicalGameObject::GetOrientation() const {
     return _orientation;
 }

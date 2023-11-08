@@ -11,9 +11,10 @@ public:
     PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name);
     PhysicalGameObject(float initialX, float initialY, int radius, std::string name);
 
-    //void Initialize(float initialX, float initialY, int sizeW, int sizeH) override;
-
+    // Logic
     void Move();
+    virtual void CollisionOnEnter();
+    virtual void CollisionOnExit();
 
     /*
         Get

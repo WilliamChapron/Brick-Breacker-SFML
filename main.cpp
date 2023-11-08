@@ -32,6 +32,7 @@
 #include "GameManager.h"
 #include "GameObjectManager.h"
 #include "RendererManager.h"
+#include "LevelManager.h"
 #include <iostream>
 
 
@@ -39,35 +40,19 @@ int main(int argc, char** argv) {
     RendererManager rendererManager(1000,1000);
     GameObjectManager gameObjectManager;
     InputManager inputManager;      
+    LevelManager levelManager;
 
-    Canon* canon1 = new Canon(100, 150, 200, 100, "Canon");
-    Canon* canon2 = new Canon(300, 250, 200, 100, "Canon");
-    Canon* canon3 = new Canon(500, 350, 200, 100, "Canon");
-    //Canon* canon2 = new Canon(400, 250, 200, 100, "Canon");
-    gameObjectManager.AddObject(canon1);
-    gameObjectManager.AddObject(canon2);
-    gameObjectManager.AddObject(canon3);
-    gameObjectManager.AddObject(canon3);
-    //gameObjectManager.RemoveObject(canon1);
-    //std::vector<GameObject*> object = gameObjectManager.FindObjectsByName("Canone");
+    levelManager.Initialize(gameObjectManager);
 
-
-    //gameObjectManager.AddObject(canon2);
 
     // GameLoop
     while (rendererManager.GetWindow()->isOpen()) {
         inputManager.Update(rendererManager.GetWindow());
         std::vector<GameObject*> * entitiesAlive = gameObjectManager.GetAllObjects();
         rendererManager.Update(entitiesAlive);
-        // UPDATE
-        // 
-        // 
-        // DRAW
-        /*rendererManager.DrawObjects();*/
     }
 
-    //delete canon1;
-    //delete ball1;
+    // # TODO Delete Memory
 
     return 0;
 }

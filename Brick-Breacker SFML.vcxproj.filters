@@ -109,4 +109,10 @@
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="Levels\level1.json" />
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
+  </ItemGroup>
 </Project>
