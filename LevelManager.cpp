@@ -1,4 +1,6 @@
 #include "LevelManager.h"
+#include "Canon.h"
+#include "GameObjectManager.h"
 
 
 LevelManager::LevelManager() : _currentLevel(0), _isLevelLoaded(false) 

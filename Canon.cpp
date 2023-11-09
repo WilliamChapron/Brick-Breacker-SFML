@@ -1,4 +1,6 @@
 #include "Canon.h"
+#include "GameObject.h"
+#include <string>
 
 Canon::Canon() : PhysicalGameObject() {
 }

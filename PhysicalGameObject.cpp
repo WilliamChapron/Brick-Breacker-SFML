@@ -1,5 +1,17 @@
-#include "PhysicalGameObject.h"
+
 #include <iostream>
+
+#include <SFML/Graphics.hpp>
+
+#include "GameObject.h"
+#include "PhysicalGameObject.h"
+#include "CollisionManager.h"
+#include "GameManager.h"
+#include "GameObjectManager.h"
+
+
+
+
 
 PhysicalGameObject::PhysicalGameObject() : GameObject() {
     _moveState = 0;

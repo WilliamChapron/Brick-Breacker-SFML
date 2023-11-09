@@ -1,7 +1,7 @@
 #pragma once
 
 #include <iostream>
-#include "GameObjectManager.h"
+
 
 #include <nlohmann/json.hpp> // Treat json
 #include <fstream> // Syntax file
@@ -9,6 +9,10 @@ using json = nlohmann::json; // Using namespace
 
 // SFML
 #include <SFML/Graphics.hpp>
+
+class Canon;
+class GameObject;
+class GameObjectManager;
 
 
 

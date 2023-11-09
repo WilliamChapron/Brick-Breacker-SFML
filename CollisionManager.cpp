@@ -1,4 +1,5 @@
 #include "CollisionManager.h"
+#include <algorithm>
 #include <iostream>
 
 

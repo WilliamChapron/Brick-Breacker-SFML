@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
-#include "GameObjectManager.h"
+class GameObjectManager;
 
 class GameObject {
 public:

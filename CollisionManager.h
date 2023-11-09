@@ -1,6 +1,8 @@
 #pragma once
 
 #include "PhysicalGameObject.h" 
+#include <string>
+#include <vector>
 
 namespace CollisionNamespace {
     class CollisionManager {

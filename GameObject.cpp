@@ -1,4 +1,5 @@
 #include "GameObject.h"
+#include "GameObjectManager.h"
 
 GameObject::GameObject() {
     Initialize(0.0f, 0.0f, 1, 1, "", nullptr);

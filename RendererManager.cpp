@@ -1,5 +1,6 @@
 ﻿#include "RendererManager.h"
 
+#include <SFML/Graphics.hpp>
 #include "GameObject.h"
 
 RendererManager::RendererManager(int width, int height) {

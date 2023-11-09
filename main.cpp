@@ -46,11 +46,11 @@ int main(int argc, char** argv) {
     /*levelManager.Initialize();
     levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());*/
 
-    //Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
-    //gameObjectManager->AddObject(brick1);
+    Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
+    gameObjectManager->AddObject(brick1);
 
-    //Ball* ball1 = new Ball(100, 200, 200, "Ball");
-    //gameObjectManager->AddObject(ball1);
+    Ball* ball1 = new Ball(100, 200, 200, "Ball");
+    gameObjectManager->AddObject(ball1);
 
 
     // GameLoop

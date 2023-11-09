@@ -1,10 +1,12 @@
 #pragma once
 
-#pragma once
+namespace sf 
+{
+    class RenderWindow;
+}
 
-#include <SFML/Graphics.hpp>
-#include "Canon.h"
-#include "Ball.h"
+class GameObject;
+#include <vector>
 
 class RendererManager {
 public:

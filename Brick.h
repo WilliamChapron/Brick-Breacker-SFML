@@ -6,6 +6,7 @@ public:
     // Constructor
     Brick();
     Brick(float initialX, float initialY, float width, float height, std::string name);
+    ~Brick();
 
 
     /*

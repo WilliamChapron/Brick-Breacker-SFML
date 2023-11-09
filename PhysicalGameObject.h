@@ -1,14 +1,26 @@
 #pragma once
 
-#include "GameObject.h" 
-#include "GameObjectManager.h"
-#include "CollisionManager.h"
-#include <SFML/Graphics.hpp>
-#include "GameManager.h"
+#include<SFML/System/Vector2.hpp>
+
+//namespace sf
+//{
+//    class Vector2f;
+//}
+
+class GameObjectManager;
+class CollisionManager;
+
+class GameObjectManager;
+class GameManager;
+
+#include "GameObject.h"
+
+#include <vector>
+#include <string>
 
 class PhysicalGameObject : public GameObject {
 public:
-    // Constructor
+    // Constructor 
     PhysicalGameObject();
     PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name);
     PhysicalGameObject(float initialX, float initialY, int radius, std::string name);

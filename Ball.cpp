@@ -1,4 +1,7 @@
 #include "Ball.h"
+#include "GameObject.h"
+#include <string>
+
 
 Ball::Ball() : PhysicalGameObject() {
 
