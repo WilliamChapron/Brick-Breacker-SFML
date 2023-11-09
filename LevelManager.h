@@ -40,4 +40,7 @@ private:
     int _randomGeneratedLevel;
     int _currentLevel;
     bool _isLevelLoaded;
+
+    // Store object in memory
+    std::vector<GameObject*> _objectsPointer;
 };

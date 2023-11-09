@@ -5,9 +5,8 @@ class Brick : public GameObject {
 public:
     // Constructor
     Brick();
-    Brick(float initialX, float initialY, float width, float height);
+    Brick(float initialX, float initialY, float width, float height, std::string name);
 
-    void Initialize(float initialX, float initialY, float width, float height);
 
     /*
         Get / Set

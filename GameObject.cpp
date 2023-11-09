@@ -45,7 +45,7 @@ sf::Shape* GameObject::GetShape() const {
 }
 
 
-void GameObject::Update() {
+void GameObject::Update(GameObjectManager* gameObjectManager) {
 }
 
 void GameObject::Render() {
@@ -93,4 +93,8 @@ void GameObject::SetRotation(float angle) {
 
 int GameObject::GetRotation() const {
     return ptr_shape->getRotation();
+}
+
+bool GameObject::GetIsCollidable() const {
+    return _isCollidable;
 }

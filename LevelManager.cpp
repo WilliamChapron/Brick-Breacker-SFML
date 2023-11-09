@@ -8,7 +8,10 @@ LevelManager::LevelManager() : _currentLevel(0), _isLevelLoaded(false)
 
 LevelManager::~LevelManager() 
 {
-
+    for (GameObject* object : _objectsPointer) {
+        delete object;
+    }
+    
 }
 
 void LevelManager::Initialize() 
@@ -41,11 +44,21 @@ void LevelManager::LoadLevel(GameObjectManager* gameObjectManager, sf::RenderWin
         // Get window size 
         sf::Vector2u winSize = window->getSize();
 
+        if (_objectsPointer.empty() == false) 
+        {
+            for (GameObject* object : _objectsPointer) {
+                delete object;
+            }
+
+            _objectsPointer.clear();
+        }
+
         for (const Rect brick : bricks) {
             Canon* canon1 = new Canon((winSize.x * brick.x)/100, (winSize.y * brick.y)/100, brick.width, brick.height, "Canon");
             std::cout << winSize.x / brick.x << std::endl;
             std::cout << winSize.y / brick.y << std::endl;
             gameObjectManager->AddObject(canon1);
+            _objectsPointer.push_back(canon1);
         }
 
         _isLevelLoaded = true;

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include "GameObjectManager.h"
 
 class GameObject {
 public:
@@ -15,7 +16,7 @@ public:
 
     // Base Methods
     virtual void Initialize(float initialX, float initialY, int sizeW, int sizeH, std::string name, sf::Shape* shape);
-    virtual void Update();
+    virtual void Update(GameObjectManager* gameObjectManager);
     virtual void Render();
 
 
@@ -30,6 +31,8 @@ public:
     int GetHeight();
 
     std::string GetName() const;
+
+    bool GetIsCollidable() const;
 
 
     /*
@@ -57,6 +60,9 @@ protected:
 
     // Name 
     std::string _name;
+
+
+    bool _isCollidable;
 
 private:
 

@@ -1,6 +1,8 @@
 #pragma once
 
 #include "GameObject.h" 
+#include "GameObjectManager.h"
+#include "CollisionManager.h"
 #include <SFML/Graphics.hpp>
 #include "GameManager.h"
 
@@ -11,10 +13,15 @@ public:
     PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name);
     PhysicalGameObject(float initialX, float initialY, int radius, std::string name);
 
+
+    void Update(GameObjectManager* gameObjectManager) override;
     // Logic
     void Move();
-    virtual void CollisionOnEnter();
-    virtual void CollisionOnExit();
+
+    virtual void CheckCollideState(PhysicalGameObject* object);
+    virtual void OnCollisionEnter();
+    virtual void OnCollisionStay();
+    virtual void OnCollisionExit();
 
     /*
         Get
@@ -34,4 +41,6 @@ protected:
     int _moveState;
     int _speed; 
     sf::Vector2f _orientation;
+
+    std::vector<PhysicalGameObject*> objvect_collisionObject;
 };

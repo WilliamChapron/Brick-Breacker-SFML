@@ -23,6 +23,7 @@
 #include "PhysicalGameObject.h"
 #include "Ball.h"
 #include "Canon.h"
+#include "Brick.h"
 #include "InputManager.h"
 #include "CollisionManager.h"
 #include "GameManager.h"
@@ -34,19 +35,31 @@
 
 int main(int argc, char** argv) {
     RendererManager rendererManager(1000,1000);
+
     GameObjectManager* gameObjectManager = new GameObjectManager;
+    
+
+
     InputManager inputManager;      
     LevelManager levelManager;
 
-    levelManager.Initialize();
-    levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());
+    /*levelManager.Initialize();
+    levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());*/
+
+    //Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
+    //gameObjectManager->AddObject(brick1);
+
+    //Ball* ball1 = new Ball(100, 200, 200, "Ball");
+    //gameObjectManager->AddObject(ball1);
 
 
     // GameLoop
     while (rendererManager.GetWindow()->isOpen()) {
         inputManager.Update(rendererManager.GetWindow());
-        std::vector<GameObject*> * entitiesAlive = gameObjectManager->GetAllObjects();
+        std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
         rendererManager.Update(entitiesAlive);
+
+        gameObjectManager->Update(gameObjectManager);
     }
 
     // # TODO Delete Memory

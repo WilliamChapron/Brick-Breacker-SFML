@@ -7,6 +7,13 @@ GameObjectManager::GameObjectManager() {
 GameObjectManager::~GameObjectManager() {
 }
 
+void GameObjectManager::Update(GameObjectManager* gameObjectManager) {
+    for (GameObject* object : *objvect_objects) {
+        object->Update(gameObjectManager);
+    }
+}
+
+
 void GameObjectManager::AddObject(GameObject* object) {
     if (objvect_objects->size() < RendererManager::maxObjects) {
         objvect_objects->push_back(object);
@@ -46,12 +53,6 @@ std::vector<GameObject*> * GameObjectManager::GetAllObjects() {
 
 int GameObjectManager::GetObjectsNumber() {
     return objvect_objects->size();
-}
-
-void GameObjectManager::Update() {
-    for (GameObject* object : *objvect_objects) {
-        object->Update();
-    }
 }
 
 void GameObjectManager::Clear() {

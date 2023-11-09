@@ -138,6 +138,7 @@
     <ClCompile Include="Border.cpp" />
     <ClCompile Include="Brick.cpp" />
     <ClCompile Include="Canon.cpp" />
+    <ClCompile Include="ChunkManager.cpp" />
     <ClCompile Include="CollisionManager.cpp" />
     <ClCompile Include="PhysicalGameObject.cpp" />
     <ClCompile Include="GameManager.cpp" />
@@ -155,6 +156,7 @@
     <ClInclude Include="Border.h" />
     <ClInclude Include="Brick.h" />
     <ClInclude Include="Canon.h" />
+    <ClInclude Include="ChunkManager.h" />
     <ClInclude Include="CollisionManager.h" />
     <ClInclude Include="PhysicalGameObject.h" />
     <ClInclude Include="GameManager.h" />

@@ -13,6 +13,7 @@ public:
     GameObjectManager();
     ~GameObjectManager();
 
+    void Update(GameObjectManager * gameObjectManager);
 
     void AddObject(GameObject* object);
 
@@ -24,8 +25,6 @@ public:
 
 
     int GetObjectsNumber();
-
-    void Update();
 
     void Clear();
 
