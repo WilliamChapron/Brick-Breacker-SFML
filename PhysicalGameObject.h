@@ -1,6 +1,6 @@
 #pragma once
 
-#include<SFML/System/Vector2.hpp>
+#include <SFML/System/Vector2.hpp>
 
 //namespace sf
 //{
@@ -51,7 +51,7 @@ public:
 
 protected:
     int _moveState;
-    int _speed; 
+    float _speed; 
     sf::Vector2f _orientation;
 
     std::vector<PhysicalGameObject*> objvect_collisionObject;

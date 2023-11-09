@@ -44,3 +44,8 @@ sf::Vector2i InputManager::GetMouseMovement() {
     _previousMousePosition = currentPosition;  // Mettez à jour la position précédente
     return mouseMovement;
 }
+
+sf::Vector2i InputManager::GetMousePosition() {
+    sf::Vector2i currentPosition = sf::Mouse::getPosition();
+    return currentPosition;
+}

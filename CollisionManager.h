@@ -12,7 +12,7 @@ namespace CollisionNamespace {
 
             static void Initialize();
 
-            static bool RectCollision(PhysicalGameObject& rect1, PhysicalGameObject& rect2);
+            static bool RectCollision(PhysicalGameObject* rect1, PhysicalGameObject* rect2);
             static bool CircleRectCollision(PhysicalGameObject& circle, PhysicalGameObject& rect);
 
 

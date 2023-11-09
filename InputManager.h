@@ -18,6 +18,7 @@ public:
     bool CheckMouseLeftButtonPressed();
 
     sf::Vector2i GetMouseMovement();     // Get mouse move from previous mouse position
+    sf::Vector2i GetMousePosition();     // Get mouse pos
 
 
 

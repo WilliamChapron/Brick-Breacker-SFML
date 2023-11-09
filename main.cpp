@@ -43,22 +43,32 @@ int main(int argc, char** argv) {
     InputManager inputManager;      
     LevelManager levelManager;
 
-    /*levelManager.Initialize();
-    levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());*/
+    //levelManager.Initialize();
+    //levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());
 
     Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
     gameObjectManager->AddObject(brick1);
 
     Ball* ball1 = new Ball(100, 200, 200, "Ball");
     gameObjectManager->AddObject(ball1);
+    
+
+    //Ball* ball2 = new Ball(100, 200, 200, "Ball");
+    //gameObjectManager->AddObject(ball2);
+
 
 
     // GameLoop
     while (rendererManager.GetWindow()->isOpen()) {
+        /*ball1->SetOrientation(1,0);*/
+        
         inputManager.Update(rendererManager.GetWindow());
         std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
+        sf::Vector2i mousePosition = inputManager.GetMousePosition();
+        sf::Vector2f mousePos(mousePosition.x,mousePosition.y);
+        brick1->SetPosition(mousePos.x, mousePos.y);
         rendererManager.Update(entitiesAlive);
-
+        GameNamespace::GameManager::Update();
         gameObjectManager->Update(gameObjectManager);
     }
 

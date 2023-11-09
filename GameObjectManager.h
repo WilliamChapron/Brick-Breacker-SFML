@@ -29,5 +29,5 @@ public:
     void Clear();
 
 private:
-    std::vector<GameObject*> * objvect_objects;  
+    std::vector<GameObject*> * objvect_objects;
 };

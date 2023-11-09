@@ -16,18 +16,18 @@ namespace CollisionNamespace {
 
 
 
-    bool CollisionManager::RectCollision(PhysicalGameObject& rect1, PhysicalGameObject& rect2)
+    bool CollisionManager::RectCollision(PhysicalGameObject* rect1, PhysicalGameObject* rect2)
     {
         // Calcul des bords pour les deux objets
-        float left1 = rect1.GetPosition().x;
-        float right1 = left1 + rect1.GetWidth();
-        float top1 = rect1.GetPosition().y;
-        float bottom1 = top1 + rect1.GetHeight();
+        float left1 = rect1->GetPosition().x;
+        float right1 = left1 + rect1->GetWidth();
+        float top1 = rect1->GetPosition().y;
+        float bottom1 = top1 + rect1->GetHeight();
 
-        float left2 = rect2.GetPosition().x;
-        float right2 = left2 + rect2.GetWidth();
-        float top2 = rect2.GetPosition().y;
-        float bottom2 = top2 + rect2.GetHeight();
+        float left2 = rect2->GetPosition().x;
+        float right2 = left2 + rect2->GetWidth();
+        float top2 = rect2->GetPosition().y;
+        float bottom2 = top2 + rect2->GetHeight();
 
 
 
