@@ -12,7 +12,13 @@ Ball::Ball(float initialX, float initialY, float radius, std::string name) : Phy
     _speed = 100;
     _moveState = 1;
     _isCollidable = true;
+
+
+    sf::Vector2f setorigin(radius / 2.f, radius / 2.f);
+    this->GetShape()->setOrigin(setorigin);
 }
+
+
 
 Ball::~Ball() {
     

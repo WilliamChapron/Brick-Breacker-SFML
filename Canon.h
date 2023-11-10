@@ -2,6 +2,9 @@
 
 #include "PhysicalGameObject.h"
 
+class Ball;
+class GameObjectManager;
+
 class Canon : public PhysicalGameObject {
 public:
     // Constructor
@@ -10,8 +13,8 @@ public:
 
     // Destructor
     ~Canon();
-
-
+    void RotateTowardsMouse(sf::Vector2i mousePosition);
+    void Shoot(sf::Vector2f targetPosition, GameObjectManager* gameObjectManager);
 
 private:
 

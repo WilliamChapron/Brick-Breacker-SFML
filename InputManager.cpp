@@ -14,14 +14,16 @@ InputManager::~InputManager() {
     delete sf_event;
 }
 
-void InputManager::Update(sf::RenderWindow* window) {
+int InputManager::Update(sf::RenderWindow* window) {
     if (window->pollEvent(*sf_event)) {
         if (sf_event->type == sf::Event::Closed) {
             window->close();
         }
         if (CheckMouseLeftButtonPressed()) {
+            return 1;
             std::cout << "left click" << std::endl;
         }
+        return 0;
         // Check other keyboard in the same place (in loop)
     }
 }

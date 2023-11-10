@@ -50,21 +50,23 @@ void PhysicalGameObject::Move()
 void PhysicalGameObject::Update(GameObjectManager* gameObjectManager) {
     //std::cout << "Update physical game object" << std::endl;
     //Move();
+
+    Move();
     
 
-    // Check collision with all alive abjects
-    std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
-    for (GameObject* object : *entitiesAlive) {
-        // check if try object is collidable
-        if (object->GetName() != this->GetName()) {
-            if (object->GetIsCollidable()) {
-                /*std::cout << object->GetName() << std::endl;*/
-                PhysicalGameObject* physicalObject = static_cast<PhysicalGameObject*>(object);
-                CheckCollideState(physicalObject);
-            }
-        }
+    //// Check collision with all alive abjects
+    //std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
+    //for (GameObject* object : *entitiesAlive) {
+    //    // check if try object is collidable
+    //    if (object->GetName() != this->GetName()) {
+    //        if (object->GetIsCollidable()) {
+    //            /*std::cout << object->GetName() << std::endl;*/
+    //            PhysicalGameObject* physicalObject = static_cast<PhysicalGameObject*>(object);
+    //            CheckCollideState(physicalObject);
+    //        }
+    //    }
 
-    }
+    //}
 }
 
 

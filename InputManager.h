@@ -14,7 +14,7 @@ public:
 
 
 
-    void Update(sf::RenderWindow* window);
+    int Update(sf::RenderWindow* window);
 
 
     bool CheckMouseLeftButtonPressed();

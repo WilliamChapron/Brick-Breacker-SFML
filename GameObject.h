@@ -47,8 +47,8 @@ public:
     void SetScale(float scaleX, float scaleY);
     sf::Vector2f GetScale() const;
 
-    void SetRotation(float angle);
-    int GetRotation() const;
+    virtual void SetRotation(float angle);
+    virtual int GetRotation() const;
 
 // Accessible by child
 protected:

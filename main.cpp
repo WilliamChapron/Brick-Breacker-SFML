@@ -46,28 +46,51 @@ int main(int argc, char** argv) {
     //levelManager.Initialize();
     //levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());
 
-    Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
-    gameObjectManager->AddObject(brick1);
+    //Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
+    //gameObjectManager->AddObject(brick1);
 
-    Ball* ball1 = new Ball(100, 200, 200, "Ball");
-    gameObjectManager->AddObject(ball1);
+    Canon* canon1 = new Canon(450, 450, 100, 100, "Canon");
+    //Ball* ball1 = new Ball(100, 100, 100, "Canon");
+
+    gameObjectManager->AddObject(canon1);
+    //gameObjectManager->AddObject(ball1);
+
+    //Ball* ball1 = new Ball(100, 200, 200, "Ball");
+    //gameObjectManager->AddObject(ball1);
+
+    //Brick* brick2 = new Brick(100, 200, 100, 200, "Brick");
+    //gameObjectManager->AddObject(brick2);
     
 
     //Ball* ball2 = new Ball(100, 200, 200, "Ball");
     //gameObjectManager->AddObject(ball2);
+
+    //std::cout << ball1->GetPosition().x << std::endl;
+    //std::cout << ball1->GetPosition().y << std::endl;
 
 
 
     // GameLoop
     while (rendererManager->GetWindow()->isOpen()) {
         /*ball1->SetOrientation(1,0);*/
-        
-        inputManager.Update(rendererManager->GetWindow());
-        std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
-        sf::Vector2i mousePosition = inputManager.GetMousePosition(rendererManager);
 
-        sf::Vector2f mousePos(mousePosition.x,mousePosition.y);
-        brick1->SetPosition(mousePos.x, mousePos.y);
+
+        
+        
+        std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
+        sf::Vector2i mousePosI = inputManager.GetMousePosition(rendererManager);
+
+        sf::Vector2f mousePosF(mousePosI.x,mousePosI.y);
+        canon1->RotateTowardsMouse(mousePosI);
+
+        if (inputManager.Update(rendererManager->GetWindow()) == 1) {
+            canon1->Shoot(mousePosF, gameObjectManager);
+        }
+        
+        //brick1->SetPosition(mousePos.x, mousePos.y);
+
+
+
         rendererManager->Update(entitiesAlive);
         GameNamespace::GameManager::Update();
         gameObjectManager->Update(gameObjectManager);
