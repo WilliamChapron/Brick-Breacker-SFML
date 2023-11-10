@@ -34,7 +34,7 @@
 
 
 int main(int argc, char** argv) {
-    RendererManager rendererManager(1000,1000);
+    RendererManager* rendererManager = new RendererManager(1000,1000);
 
     GameObjectManager* gameObjectManager = new GameObjectManager;
     
@@ -59,15 +59,16 @@ int main(int argc, char** argv) {
 
 
     // GameLoop
-    while (rendererManager.GetWindow()->isOpen()) {
+    while (rendererManager->GetWindow()->isOpen()) {
         /*ball1->SetOrientation(1,0);*/
         
-        inputManager.Update(rendererManager.GetWindow());
+        inputManager.Update(rendererManager->GetWindow());
         std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
-        sf::Vector2i mousePosition = inputManager.GetMousePosition();
+        sf::Vector2i mousePosition = inputManager.GetMousePosition(rendererManager);
+
         sf::Vector2f mousePos(mousePosition.x,mousePosition.y);
         brick1->SetPosition(mousePos.x, mousePos.y);
-        rendererManager.Update(entitiesAlive);
+        rendererManager->Update(entitiesAlive);
         GameNamespace::GameManager::Update();
         gameObjectManager->Update(gameObjectManager);
     }

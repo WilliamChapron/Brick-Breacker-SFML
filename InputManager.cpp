@@ -1,5 +1,7 @@
 #include "InputManager.h"
+#include "RendererManager.h"
 #include <iostream>
+#include <SFML/Graphics.hpp>
 
 InputManager::InputManager() {
     _isMouseLeftPressed = false;
@@ -20,11 +22,7 @@ void InputManager::Update(sf::RenderWindow* window) {
         if (CheckMouseLeftButtonPressed()) {
             std::cout << "left click" << std::endl;
         }
-        sf::Vector2i mouseMovement = GetMouseMovement();
-        /*std::cout << mouseMovement.x << ":"  << mouseMovement.y << std::endl;*/
-
-
-        
+        // Check other keyboard in the same place (in loop)
     }
 }
 
@@ -45,7 +43,8 @@ sf::Vector2i InputManager::GetMouseMovement() {
     return mouseMovement;
 }
 
-sf::Vector2i InputManager::GetMousePosition() {
-    sf::Vector2i currentPosition = sf::Mouse::getPosition();
+sf::Vector2i InputManager::GetMousePosition(RendererManager* rendererManager) {
+    const sf::RenderWindow* window = rendererManager->GetWindow();
+    sf::Vector2i currentPosition = sf::Mouse::getPosition((*window));
     return currentPosition;
 }

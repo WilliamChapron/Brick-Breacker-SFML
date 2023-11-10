@@ -1,5 +1,7 @@
 #pragma once
 
+
+class RendererManager;
 #include <SFML/Graphics.hpp>
 
 class InputManager {
@@ -18,7 +20,7 @@ public:
     bool CheckMouseLeftButtonPressed();
 
     sf::Vector2i GetMouseMovement();     // Get mouse move from previous mouse position
-    sf::Vector2i GetMousePosition();     // Get mouse pos
+    sf::Vector2i GetMousePosition(RendererManager* rendererManager);     // Get mouse pos
 
 
 

@@ -55,6 +55,7 @@ void GameObject::Render() {
 void GameObject::SetPosition(float x, float y) {
     _position.x = x;
     _position.y = y;
+    ptr_shape->setPosition(_position.x, _position.y);
 }
 
 sf::Vector2f GameObject::GetPosition() const {
