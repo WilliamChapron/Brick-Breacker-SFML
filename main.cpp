@@ -49,11 +49,13 @@ int main(int argc, char** argv) {
     //Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
     //gameObjectManager->AddObject(brick1);
 
-    Canon* canon1 = new Canon(450, 450, 100, 100, "Canon");
+    Canon* canon1 = new Canon(450, 750, 100, 100, "Canon");
     //Ball* ball1 = new Ball(100, 100, 100, "Canon");
+    Brick* brick1 = new Brick(750, 100, 200, 50, "Brick");
 
     gameObjectManager->AddObject(canon1);
     //gameObjectManager->AddObject(ball1);
+    gameObjectManager->AddObject(brick1);
 
     //Ball* ball1 = new Ball(100, 200, 200, "Ball");
     //gameObjectManager->AddObject(ball1);

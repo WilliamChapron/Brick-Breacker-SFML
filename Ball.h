@@ -1,15 +1,20 @@
 #pragma once
 
 #include "PhysicalGameObject.h"
+#include "CollisionManager.h"
 
 class Ball : public PhysicalGameObject {
 public:
-    // Constructor
+    // Constructors
     Ball();
     Ball(float initialX, float initialY, float radius, std::string name);
+
+    // Destructor
     ~Ball();
+
+    sf::FloatRect GetBoundingBox() const;
+
+    void HandleCollision(CollisionFace face) override;
 
 private:
 };
-
-

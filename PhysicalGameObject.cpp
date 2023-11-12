@@ -133,4 +133,7 @@ void PhysicalGameObject::SetSpeed(int speed) {
     _speed = speed;
 }
 
+sf::FloatRect PhysicalGameObject::GetBoundingBox() const {
+    return sf::FloatRect();
+}
 

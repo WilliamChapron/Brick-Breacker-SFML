@@ -50,6 +50,8 @@ public:
     virtual void SetRotation(float angle);
     virtual int GetRotation() const;
 
+    virtual void HandleCollision();
+
 // Accessible by child
 protected:
     sf::Shape* ptr_shape;
