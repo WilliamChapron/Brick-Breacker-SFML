@@ -27,8 +27,8 @@ public:
     sf::Vector2f GetPosition() const;
     sf::Shape* GetShape();
     sf::Shape* GetShape() const;
-    int GetWidth();
-    int GetHeight();
+    int GetWidth() const;
+    int GetHeight() const;
 
     std::string GetName() const;
 
@@ -50,7 +50,7 @@ public:
     virtual void SetRotation(float angle);
     virtual int GetRotation() const;
 
-    virtual void HandleCollision();
+    /*virtual void HandleCollision();*/
 
 // Accessible by child
 protected:

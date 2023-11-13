@@ -12,9 +12,6 @@ public:
     // Destructor
     ~Ball();
 
-    sf::FloatRect GetBoundingBox() const;
-
-    void HandleCollision(CollisionFace face) override;
 
 private:
 };

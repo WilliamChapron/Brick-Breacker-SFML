@@ -14,7 +14,6 @@ class GameObjectManager;
 class GameManager;
 
 #include "GameObject.h"
-#include "CollisionManager.h"
 
 #include <vector>
 #include <string>
@@ -48,15 +47,12 @@ public:
     void SetOrientation(float x, float y);
     void SetSpeed(int speed);
 
-    virtual sf::FloatRect GetBoundingBox() const;
-    virtual void HandleCollision(CollisionFace face);
+
 
 protected:
     int _moveState;
-    float _speed; 
+    float _speed;
     sf::Vector2f _orientation;
 
     std::vector<PhysicalGameObject*> objvect_collisionObject;
-
-    sf::Shape* ptr_shape;
 };

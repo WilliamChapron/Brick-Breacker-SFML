@@ -1,30 +1,27 @@
 #pragma once
 
-#include <SFML/Graphics.hpp>
-#include <iostream>
+#include "PhysicalGameObject.h" 
+#include <string>
 #include <vector>
-#include "Ball.h" 
-#include "Brick.h"  
 
-enum class CollisionFace {
-    None,
-    Left,
-    Right,
-    Top,
-    Bottom
-};
+namespace CollisionNamespace {
 
-class CollisionManager {
-public:
-    static CollisionFace DetectCollisionFace(const sf::FloatRect& rect1, const sf::FloatRect& rect2);
+    enum class CollisionFace {
+        None,
+        Left,
+        Right,
+        Top,
+        Bottom
+    };
 
-    static void CheckBallBrickCollisions(Ball* ball, std::vector<Brick*>& bricks);
+    class CollisionManager {
+    public:
+        CollisionManager();
+        ~CollisionManager();
 
-    static void HandleCollision(Ball* ball, Brick* brick, CollisionFace face);
-    static void CheckBallBrickCollisions(Ball* ball, std::vector<Brick*>& bricks);
-
-
-private:
-    static void HandleBallBrickCollision(Ball* ball, Brick* brick, CollisionFace face);
-};
-
+        void Initialize();
+        static bool RectCollision(GameObject* rect1, GameObject* rect2);
+        static bool CircleRectCollision(GameObject& circle, GameObject& rect);
+        static CollisionFace DetectCollisionFace(const sf::FloatRect& rect1, const sf::FloatRect& rect2);
+    };
+}

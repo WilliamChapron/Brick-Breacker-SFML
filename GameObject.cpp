@@ -62,13 +62,14 @@ sf::Vector2f GameObject::GetPosition() const {
     return _position;
 }
 
-int GameObject::GetWidth() {
+int GameObject::GetWidth() const {
     return _width;
 }
 
-int GameObject::GetHeight() {
+int GameObject::GetHeight() const {
     return _height;
 }
+
 
 std::string GameObject::GetName() const {
     return _name;

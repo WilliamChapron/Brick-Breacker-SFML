@@ -31,8 +31,8 @@ PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int radiu
 
 
 
-void PhysicalGameObject::Move() 
-{ 
+void PhysicalGameObject::Move()
+{
 
     _position.x += _speed * _orientation.x * GameNamespace::GameManager::GetDeltaTime();
     _position.y += _speed * _orientation.y * GameNamespace::GameManager::GetDeltaTime();
@@ -42,8 +42,8 @@ void PhysicalGameObject::Move()
     //std::cout << _position.x<< std::endl;
     //std::cout << _position.y << std::endl;
 
-    if (ptr_shape != nullptr) { 
-        ptr_shape->setPosition(_position); 
+    if (ptr_shape != nullptr) {
+        ptr_shape->setPosition(_position);
     }
 }
 
@@ -53,67 +53,54 @@ void PhysicalGameObject::Update(GameObjectManager* gameObjectManager) {
 
     Move();
     
-
-    //// Check collision with all alive abjects
     //std::vector<GameObject*>* entitiesAlive = gameObjectManager->GetAllObjects();
+
     //for (GameObject* object : *entitiesAlive) {
-    //    // check if try object is collidable
     //    if (object->GetName() != this->GetName()) {
     //        if (object->GetIsCollidable()) {
-    //            /*std::cout << object->GetName() << std::endl;*/
     //            PhysicalGameObject* physicalObject = static_cast<PhysicalGameObject*>(object);
-    //            CheckCollideState(physicalObject);
+    //            // Appeler RectCollision directement comme une fonction statique
+    //            bool isRectCollision = CollisionNamespace::CollisionManager::RectCollision(this, physicalObject);
+    //            // ...
     //        }
     //    }
-
     //}
 }
 
 
 void PhysicalGameObject::CheckCollideState(PhysicalGameObject* object) {
+    // Utiliser une instance de CollisionManager
+    CollisionNamespace::CollisionManager collisionManager;
 
-    bool isRectCollision = CollisionNamespace::CollisionManager::RectCollision(this, object);
+    bool isRectCollision = collisionManager.RectCollision(this, object);
 
-    //std::cout << isRectCollision << "" << object->GetName() << std::endl;
-
-    // Object finder
     auto iterator = std::find(objvect_collisionObject.begin(), objvect_collisionObject.end(), object);
 
-    // Collide
     if (isRectCollision) {
-        // Object Already collide
         if (iterator != objvect_collisionObject.end()) {
-            //std::cout << "OnCollisionStay" << std::endl;
             OnCollisionStay();
-        }
-        // Object Begin Collide
-        else {
-            std::cout << "OnCollisionEnter" << std::endl;
+        } else {
             OnCollisionEnter();
             objvect_collisionObject.push_back(object);
         }
-    }
-    // No Collide
-    else {
-        // Object Exit Collide
+    } else {
         if (iterator != objvect_collisionObject.end()) {
-            std::cout << "OnCollisionExit" << std::endl;
             OnCollisionExit();
             objvect_collisionObject.erase(iterator);
         }
-        // Object Not collide
     }
 }
 
-void PhysicalGameObject::OnCollisionEnter() { // Is call when just collide on 
-
-}
-void PhysicalGameObject::OnCollisionStay() { // Is call when collide on
-
+void PhysicalGameObject::OnCollisionEnter() {
+    std::cout << "OnCollisionEnter for object: " << this->GetName() << std::endl;
 }
 
-void PhysicalGameObject::OnCollisionExit() { // Is call when collide was on and pass off
+void PhysicalGameObject::OnCollisionStay() {
+    std::cout << "OnCollisionStay for object: " << this->GetName() << std::endl;
+}
 
+void PhysicalGameObject::OnCollisionExit() {
+    std::cout << "OnCollisionExit for object: " << this->GetName() << std::endl;
 }
 
 sf::Vector2f PhysicalGameObject::GetOrientation() const {
@@ -132,8 +119,3 @@ void PhysicalGameObject::SetOrientation(float x, float y) {
 void PhysicalGameObject::SetSpeed(int speed) {
     _speed = speed;
 }
-
-sf::FloatRect PhysicalGameObject::GetBoundingBox() const {
-    return sf::FloatRect();
-}
-

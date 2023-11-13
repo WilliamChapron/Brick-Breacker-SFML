@@ -18,9 +18,11 @@ public:
     void RemoveHealth(int amount);
     int GetHealth() const;
 
-    sf::FloatRect GetBoundingBox() const;
+    bool Contains(const sf::Vector2f& point) const;
 
-    void HandleCollision() override;
+    void Move(const sf::Vector2f& offset);
+
+    sf::FloatRect GetBoundingBox() const;
 
 private:
     int _health;
