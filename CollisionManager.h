@@ -1,6 +1,7 @@
 #pragma once
 
-#include "PhysicalGameObject.h" 
+class PhysicalGameObject;
+class GameObject;
 #include <string>
 #include <vector>
 
@@ -12,8 +13,8 @@ namespace CollisionNamespace {
 
             static void Initialize();
 
-            static bool RectCollision(PhysicalGameObject* rect1, PhysicalGameObject* rect2);
-            static bool CircleRectCollision(PhysicalGameObject& circle, PhysicalGameObject& rect);
+            static bool RectCollision(GameObject* rect1, GameObject* rect2);
+            static bool CircleRectCollision(GameObject* circle, GameObject* rect);
 
 
             // TOTHINK - Chunk

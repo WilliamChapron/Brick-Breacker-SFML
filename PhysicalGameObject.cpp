@@ -51,7 +51,7 @@ void PhysicalGameObject::Update(GameObjectManager* gameObjectManager) {
     //std::cout << "Update physical game object" << std::endl;
     //Move();
 
-    Move();
+    /*Move();*/
     
 
     //// Check collision with all alive abjects

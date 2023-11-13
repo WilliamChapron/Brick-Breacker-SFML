@@ -46,16 +46,31 @@ int main(int argc, char** argv) {
     //levelManager.Initialize();
     //levelManager.LoadLevel(gameObjectManager, rendererManager.GetWindow());
 
-    //Brick* brick1 = new Brick(100, 200, 100, 200, "Brick");
-    //gameObjectManager->AddObject(brick1);
+    Brick* brick1 = new Brick(800, 800, 300, 300, "Brick");
+    gameObjectManager->AddObject(brick1);
+
+
+    //PhysicalGameObject* brick2 = new PhysicalGameObject(200, 200, 300, 300, "Brick");
+    //gameObjectManager->AddObject(brick2);
+    //PhysicalGameObject* brick3 = new PhysicalGameObject(300, 300, 100, 100, "Brick");
+    //gameObjectManager->AddObject(brick3);
+    //brick3->GetShape()->setFillColor(sf::Color::Red);
+
+
+
 
     Canon* canon1 = new Canon(450, 450, 100, 100, "Canon");
-    //Ball* ball1 = new Ball(100, 100, 100, "Canon");
+    Ball* ball1 = new Ball(770, 880, 30, "Ball");
 
     gameObjectManager->AddObject(canon1);
-    //gameObjectManager->AddObject(ball1);
+    gameObjectManager->AddObject(ball1);
+
+    brick1->GetShape()->setFillColor(sf::Color::Red);
+
+
 
     //Ball* ball1 = new Ball(100, 200, 200, "Ball");
+    
     //gameObjectManager->AddObject(ball1);
 
     //Brick* brick2 = new Brick(100, 200, 100, 200, "Brick");
@@ -87,7 +102,11 @@ int main(int argc, char** argv) {
             canon1->Shoot(mousePosF, gameObjectManager);
         }
         
-        //brick1->SetPosition(mousePos.x, mousePos.y);
+        brick1->SetPosition(mousePosF.x, mousePosF.y);
+
+        bool success = CollisionNamespace::CollisionManager::CircleRectCollision(ball1, brick1);
+        //std::cout << success << std::endl;
+
 
 
 

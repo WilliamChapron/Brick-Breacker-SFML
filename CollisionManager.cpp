@@ -1,4 +1,6 @@
 #include "CollisionManager.h"
+#include "GameObject.h"
+#include "PhysicalGameObject.h"
 #include <algorithm>
 #include <iostream>
 
@@ -16,7 +18,7 @@ namespace CollisionNamespace {
 
 
 
-    bool CollisionManager::RectCollision(PhysicalGameObject* rect1, PhysicalGameObject* rect2)
+    bool CollisionManager::RectCollision(GameObject* rect1, GameObject* rect2)
     {
         // Calcul des bords pour les deux objets
         float left1 = rect1->GetPosition().x;
@@ -44,58 +46,58 @@ namespace CollisionNamespace {
         return collisionX && collisionY;
     }
 
-    //#TODO - Utiliser le game object plutot que la shape 
-    bool CollisionManager::CircleRectCollision(PhysicalGameObject& circle, PhysicalGameObject& rect) {
-        //sf::Shape* rectShape_ref = rect.GetShape();
-        //sf::Shape* circleShape_ref = circle.GetShape();
 
-        //sf::CircleShape* circleShape = static_cast<sf::CircleShape*>(circleShape_ref);
-        //sf::RectangleShape* rectShape = static_cast<sf::RectangleShape*>(rectShape_ref);
+    bool CollisionManager::CircleRectCollision(GameObject* circle, GameObject* rect) {
 
-        // Circle Informations
-        float circleRadius = circle.GetWidth();
-        std::cout << "Circle Radius: " << circleRadius << std::endl;
+        float circleRadius = circle->GetWidth();
+        sf::Vector2f circleCenter = circle->GetPosition();
 
-        // Center Position
-        sf::Vector2f circlePosition = circle.GetPosition();
-        std::cout << "Circle Position: (" << circlePosition.x << ", " << circlePosition.y << ")" << std::endl;
+        PhysicalGameObject* boundingRect = new PhysicalGameObject(circleCenter.x - circleRadius, circleCenter.y - circleRadius, 2 * circleRadius, 2 * circleRadius, "Rect");
 
-        // Rectangle Position
-        sf::Vector2f rectPosition = rect.GetPosition();
-        std::cout << "Rectangle Position: (" << rectPosition.x << ", " << rectPosition.y << ")" << std::endl;
+        sf::Vector2f rectPos = rect->GetPosition();
+        sf::Vector2f rectCenter = sf::Vector2f(rectPos.x + rect->GetWidth() / 2, rectPos.y + rect->GetHeight() / 2);
 
-        // Closest x/y
-        //float closestX = std::max(rectPosition.x, std::min(circlePosition.x, rectPosition.x + rect.GetWidth()));
-        //float closestY = std::max(rectPosition.y, std::min(circlePosition.y, rectPosition.y + rect.GetHeight()));
-        //std::cout << "Closest X: " << closestX << " Closest Y: " << closestY << std::endl;
+        // Check rect collide before check circle collide
+        bool success = RectCollision(rect, boundingRect);
 
-        //// Distance between closest x/y and circle center // REAL DISTANCE TAKE CARE OF RECT SIZE WITH CLOSEST 
-        //float distance = std::sqrt((circlePosition.x - closestX) * (circlePosition.x - closestX) + (circlePosition.y - closestY) * (circlePosition.y - closestY));
-        //std::cout << "Distance: " << distance << std::endl;
+        if (success ||!success) {
+            //std::cout << "Rect Collision Check: Success!" << std::endl;
 
+            sf::Vector2f circleRectDistance = sf::Vector2f(std::abs(circleCenter.x - rectCenter.x), std::abs(circleCenter.y - rectCenter.y));
+            std::cout << circleRectDistance.x << std::endl;
+            std::cout << circleRectDistance.y << std::endl;
+            //std::cout << "Circle-Rectangle Distance: (" << circleRectDistance.x << ", " << circleRectDistance.y << ")" << std::endl;
 
-        float deltaX = circlePosition.x - std::max(rectPosition.x, std::min(circlePosition.x, rectPosition.x + rect.GetWidth()));
-        float deltaY = circlePosition.y - std::max(rectPosition.y, std::min(circlePosition.y, rectPosition.y + rect.GetHeight()));
+            //sf::Vector2f maxRectDistance = sf::Vector2f(std::abs((rectPos.x + rect->GetWidth()) - rectCenter.x), std::abs((rectPos.y + rect->GetHeight()) - rectCenter.y));
+            sf::Vector2f maxRectDistance = sf::Vector2f(rect->GetWidth()/2, rect->GetHeight() / 2);
+            //std::cout << "Max Rectangle Distance: (" << maxRectDistance.x << ", " << maxRectDistance.y << ")" << std::endl;
 
-        float deltaXSquared = deltaX * deltaX;
-        float deltaYSquared = deltaY * deltaY;
-        float circleRadiusSquared = circleRadius * circleRadius;
+            // Vérification pour l'axe x
+            bool collisionX = maxRectDistance.x + circleRadius >= circleRectDistance.x;
+            //std::cout << maxRectDistance.x + circleRadius << std::endl;
+            //std::cout << circleRectDistance.x << std::endl;
 
-        bool collisionX = deltaXSquared <= circleRadiusSquared;
-        bool collisionY = deltaYSquared <= circleRadiusSquared;
-
-        bool collision = collisionX && collisionY;
+            // Vérification pour l'axe y
+            bool collisionY = maxRectDistance.y + circleRadius >= circleRectDistance.y;
+            //std::cout << maxRectDistance.y + circleRadius << std::endl;
+            //std::cout << circleRectDistance.y << std::endl;
 
 
-        /*if (distance <= circleRadius) {
-            std::cout << "Distance inferieur au circle radius: " << distance << std::endl;
+            //std::cout << circleRectDistance.y << std::endl;
+
+            //std::cout << "Circle Collision Check (X-axis): " << (collisionX ? "Success! Collision detected." : "Failed. No collision detected.") << std::endl;
+            //std::cout << "Circle Collision Check (Y-axis): " << (collisionY ? "Success! Collision detected." : "Failed. No collision detected.") << std::endl;
+
+             //Vérification globale
+            if (collisionX && collisionY) {
+                //std::cout << "Circle Collision Check: Success! Collision detected." << std::endl;
+                return true;
+            }
+            else {
+                //std::cout << "Circle Collision Check: Failed. No collision detected." << std::endl;
+            }
         }
-        if (distance >= circleRadius) {
-            std::cout << "Distance superieur au circle radius: " << distance << std::endl;
-        }
-
-        return distance <= circleRadius;*/
-        return collision;
+        return false;
     }
 
 
