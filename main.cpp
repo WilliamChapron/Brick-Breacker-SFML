@@ -60,7 +60,7 @@ int main(int argc, char** argv) {
 
 
     Canon* canon1 = new Canon(450, 450, 100, 100, "Canon");
-    Ball* ball1 = new Ball(770, 880, 30, "Ball");
+    Ball* ball1 = new Ball(500, 500, 30, "Ball");
 
     gameObjectManager->AddObject(canon1);
     gameObjectManager->AddObject(ball1);

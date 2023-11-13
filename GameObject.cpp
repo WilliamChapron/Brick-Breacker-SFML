@@ -12,8 +12,8 @@ GameObject::GameObject(float initialX, float initialY, int sizeW, int sizeH, std
 }
 
 GameObject::GameObject(float initialX, float initialY, int radius, std::string name) {
-    sf::CircleShape* newShape = new sf::CircleShape(radius,radius);
-    Initialize(initialX, initialY, radius, radius, name, newShape);
+    sf::CircleShape* newShape = new sf::CircleShape(radius);
+    Initialize(initialX, initialY, radius * 2, radius * 2, name, newShape);
 
 }
 

@@ -14,8 +14,8 @@ Ball::Ball(float initialX, float initialY, float radius, std::string name) : Phy
     _isCollidable = true;
 
 
-    sf::Vector2f setorigin(radius / 2.f, radius / 2.f);
-    this->GetShape()->setOrigin(setorigin);
+    //sf::Vector2f setorigin(radius / 2.f, radius / 2.f);
+    //this->GetShape()->setOrigin(setorigin);
 }
 
 

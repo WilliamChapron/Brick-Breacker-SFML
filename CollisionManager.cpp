@@ -49,36 +49,62 @@ namespace CollisionNamespace {
 
     bool CollisionManager::CircleRectCollision(GameObject* circle, GameObject* rect) {
 
-        float circleRadius = circle->GetWidth();
-        sf::Vector2f circleCenter = circle->GetPosition();
+        float circleRadius = circle->GetWidth() / 2.f;
 
-        PhysicalGameObject* boundingRect = new PhysicalGameObject(circleCenter.x - circleRadius, circleCenter.y - circleRadius, 2 * circleRadius, 2 * circleRadius, "Rect");
+        sf::Vector2f circlePosition = circle->GetPosition();
 
-        sf::Vector2f rectPos = rect->GetPosition();
-        sf::Vector2f rectCenter = sf::Vector2f(rectPos.x + rect->GetWidth() / 2, rectPos.y + rect->GetHeight() / 2);
+        PhysicalGameObject boundingRect(circlePosition.x, circlePosition.y, 2 * circleRadius, 2 * circleRadius, "Rect");
+
+        sf::Vector2f circleCenter = circlePosition;
+        circleCenter.x += circle->GetWidth() / 2.f;
+        circleCenter.y += circle->GetHeight() / 2.f;
+
+        sf::Vector2f rectCenter = rect->GetPosition();
+        rectCenter.x += rect->GetWidth() / 2.f;
+        rectCenter.y += rect->GetHeight() / 2.f;
+
+        //std::cout << rectCenter.x << ";" << rectCenter.y << std::endl;
 
         // Check rect collide before check circle collide
-        bool success = RectCollision(rect, boundingRect);
+        bool success = RectCollision(rect, &boundingRect);
 
-        if (success ||!success) {
+        if (success) {
+
+            //std::cout << "AABB Collides" << std::endl;
+
+            float fCircleSizeSqr = circleRadius;
+
+            float fRectHalfWidth = rect->GetWidth() / 2.f;
+            float fRectHalfHeight = rect->GetWidth() / 2.f;
+            float fRectSizeSqr = sqrt((fRectHalfWidth * fRectHalfWidth) + (fRectHalfHeight * fRectHalfHeight));
+
+            float fDistanceMaxSqr = fCircleSizeSqr + fRectSizeSqr;
+
             //std::cout << "Rect Collision Check: Success!" << std::endl;
 
-            sf::Vector2f circleRectDistance = sf::Vector2f(std::abs(circleCenter.x - rectCenter.x), std::abs(circleCenter.y - rectCenter.y));
-            std::cout << circleRectDistance.x << std::endl;
-            std::cout << circleRectDistance.y << std::endl;
+            float fXDistance = std::abs(circleCenter.x - rectCenter.x);
+            float fYDistance = std::abs(circleCenter.y - rectCenter.y);
+
+            float fDistanceSqr = sqrt((fXDistance * fXDistance) + (fYDistance * fYDistance));
+
+            //std::cout << "Distance Max: " << fDistanceMaxSqr << "| Distance: " << fDistanceSqr << std::endl;
+
+            //sf::Vector2f circleRectDistance = sf::Vector2f(, std::abs(circleCenter.y - rectCenter.y));
+            //std::cout << circleRectDistance.x << std::endl;
+            //std::cout << circleRectDistance.y << std::endl;
             //std::cout << "Circle-Rectangle Distance: (" << circleRectDistance.x << ", " << circleRectDistance.y << ")" << std::endl;
 
             //sf::Vector2f maxRectDistance = sf::Vector2f(std::abs((rectPos.x + rect->GetWidth()) - rectCenter.x), std::abs((rectPos.y + rect->GetHeight()) - rectCenter.y));
-            sf::Vector2f maxRectDistance = sf::Vector2f(rect->GetWidth()/2, rect->GetHeight() / 2);
+           // sf::Vector2f maxRectDistance = sf::Vector2f(rect->GetWidth()/2, rect->GetHeight() / 2);
             //std::cout << "Max Rectangle Distance: (" << maxRectDistance.x << ", " << maxRectDistance.y << ")" << std::endl;
 
             // Vérification pour l'axe x
-            bool collisionX = maxRectDistance.x + circleRadius >= circleRectDistance.x;
+            //bool collisionX = maxRectDistance.x + circleRadius >= circleRectDistance.x;
             //std::cout << maxRectDistance.x + circleRadius << std::endl;
             //std::cout << circleRectDistance.x << std::endl;
 
             // Vérification pour l'axe y
-            bool collisionY = maxRectDistance.y + circleRadius >= circleRectDistance.y;
+           // bool collisionY = maxRectDistance.y + circleRadius >= circleRectDistance.y;
             //std::cout << maxRectDistance.y + circleRadius << std::endl;
             //std::cout << circleRectDistance.y << std::endl;
 
@@ -89,8 +115,10 @@ namespace CollisionNamespace {
             //std::cout << "Circle Collision Check (Y-axis): " << (collisionY ? "Success! Collision detected." : "Failed. No collision detected.") << std::endl;
 
              //Vérification globale
-            if (collisionX && collisionY) {
-                //std::cout << "Circle Collision Check: Success! Collision detected." << std::endl;
+            //if (collisionX && collisionY) {
+            if(fDistanceSqr <= fDistanceMaxSqr)
+            {
+                std::cout << "Circle Collision Check: Success! Collision detected." << std::endl;
                 return true;
             }
             else {
