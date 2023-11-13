@@ -41,7 +41,7 @@ int main(int argc, char** argv) {
 
     Canon* canon1 = new Canon(450, 750, 100, 100, "Canon");
     Brick* brick1 = new Brick(750, 100, 200, 50, "Brick");
-    Brick* brick2 = new Brick(350, 100, 50, 50, "Brick");
+    Brick* brick2 = new Brick(350, 100, 25, 25, "Brick");
 
     gameObjectManager->AddObject(canon1);
     gameObjectManager->AddObject(brick1);
@@ -99,24 +99,22 @@ int main(int argc, char** argv) {
         // Utilisez les zones englobantes pour détecter la face de collision
         CollisionNamespace::CollisionFace collisionFace = CollisionNamespace::CollisionManager::DetectCollisionFace(brick1->GetBoundingBox(), brick2->GetBoundingBox());
 
-        if (collisionFace != CollisionFace::None) {
-            // Affichez la face de collision
-            std::cout << "Collision detected on face: ";
-            switch (collisionFace) {
-            case CollisionFace::Left:
-                std::cout << "Left";
-                break;
-            case CollisionFace::Right:
-                std::cout << "Right";
-                break;
-            case CollisionFace::Top:
-                std::cout << "Top";
-                break;
-            case CollisionFace::Bottom:
-                std::cout << "Bottom";
-                break;
-            }
-            std::cout << std::endl;
+        switch (collisionFace) {
+        case CollisionNamespace::CollisionFace::None:
+            std::cout << "Pas de collision." << std::endl;
+            break;
+        case CollisionNamespace::CollisionFace::Left:
+            std::cout << "Collision à gauche." << std::endl;
+            break;
+        case CollisionNamespace::CollisionFace::Right:
+            std::cout << "Collision à droite." << std::endl;
+            break;
+        case CollisionNamespace::CollisionFace::Top:
+            std::cout << "Collision en haut." << std::endl;
+            break;
+        case CollisionNamespace::CollisionFace::Bottom:
+            std::cout << "Collision en bas." << std::endl;
+            break;
         }
 
         rendererManager->Update(entitiesAlive);
