@@ -147,7 +147,6 @@
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Paddle.cpp" />
     <ClCompile Include="RendererManager.cpp" />
     <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
@@ -164,7 +163,6 @@
     <ClInclude Include="GameObjectManager.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LevelManager.h" />
-    <ClInclude Include="Paddle.h" />
     <ClInclude Include="RendererManager.h" />
     <ClInclude Include="TextureManager.h" />
   </ItemGroup>

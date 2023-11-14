@@ -65,7 +65,7 @@ int main(int argc, char** argv) {
         bool isBrickCollision = CollisionNamespace::CollisionManager::RectCollision(brick1, brick2);
 
         if (isBrickCollision) {
-            std::cout << "Collision entre les briques !" << std::endl;
+            //std::cout << "Collision entre les briques !" << std::endl;
             // Affiche 1 si les briques entrent en collision
         }
 
@@ -101,7 +101,7 @@ int main(int argc, char** argv) {
 
         switch (collisionFace) {
         case CollisionNamespace::CollisionFace::None:
-            std::cout << "Pas de collision." << std::endl;
+            std::cout << "" << std::endl;
             break;
         case CollisionNamespace::CollisionFace::Left:
             std::cout << "Collision à gauche." << std::endl;

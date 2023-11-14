@@ -43,9 +43,6 @@
     <ClCompile Include="Ball.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="Paddle.cpp">
-      <Filter>Fichiers de ressources\src\GameObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Brick.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
@@ -64,6 +61,7 @@
     <ClCompile Include="Canon.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
+    <ClCompile Include="ChunkManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameManager.h">
@@ -87,9 +85,6 @@
     <ClInclude Include="Ball.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClInclude>
-    <ClInclude Include="Paddle.h">
-      <Filter>Fichiers de ressources\src\GameObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Brick.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClInclude>
@@ -108,6 +103,7 @@
     <ClInclude Include="Canon.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClInclude>
+    <ClInclude Include="ChunkManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

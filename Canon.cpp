@@ -16,8 +16,6 @@ Canon::Canon(float initialX, float initialY, float width, float height, std::str
     this->GetShape()->setOrigin(setorigin);
     //std::cout << this->GetShape()->getOrigin().x << std::endl;
     //std::cout << this->GetShape()->getOrigin().y << std::endl;
-    //this->SetRotation(this->GetRotation()+90);
-    /*+this->GetWidth() / 2*/
 }
 
 Canon::~Canon() {
@@ -76,7 +74,7 @@ void Canon::Shoot(sf::Vector2f targetPosition, GameObjectManager* gameObjectMana
         // Normalisation du vecteur de direction
         direction.x /= magnitude;
         direction.y /= magnitude;
-        Ball* objectBall = new Ball(canonPosition.x, canonPosition.y, 25, "Ball");
+        Ball* objectBall = new Ball(canonPosition.x, canonPosition.y, 10, "Ball");
         objectBall->SetOrientation(direction.x, direction.y);
         objectBall->SetSpeed(1500);
         gameObjectManager->AddObject(objectBall);
