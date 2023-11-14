@@ -97,6 +97,10 @@ int GameObject::GetRotation() const {
     return ptr_shape->getRotation();
 }
 
+bool GameObject::GetHasToCollide() const {
+    return _hasToCollide;
+}
+
 bool GameObject::GetIsCollidable() const {
     return _isCollidable;
 }

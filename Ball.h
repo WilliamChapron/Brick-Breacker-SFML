@@ -1,6 +1,7 @@
 #pragma once
 
 #include "PhysicalGameObject.h"
+class CollisionManager;
 
 class Ball : public PhysicalGameObject {
 public:
@@ -9,7 +10,11 @@ public:
     Ball(float initialX, float initialY, float radius, std::string name);
     ~Ball();
 
+    void OnCollisionEnter(GameObject* collideObject) override; // Bouncing ball 
+
+
 private:
+    bool _shouldBounce;
 };
 
 

@@ -10,7 +10,7 @@ using json = nlohmann::json; // Using namespace
 // SFML
 #include <SFML/Graphics.hpp>
 
-class Canon;
+class Brick;
 class GameObject;
 class GameObjectManager;
 

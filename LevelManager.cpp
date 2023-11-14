@@ -1,5 +1,5 @@
 #include "LevelManager.h"
-#include "Canon.h"
+#include "Brick.h"
 #include "GameObjectManager.h"
 
 
@@ -56,11 +56,11 @@ void LevelManager::LoadLevel(GameObjectManager* gameObjectManager, sf::RenderWin
         }
 
         for (const Rect brick : bricks) {
-            Canon* canon1 = new Canon((winSize.x * brick.x)/100, (winSize.y * brick.y)/100, brick.width, brick.height, "Canon");
+            Brick* brick1 = new Brick((winSize.x * brick.x)/100, (winSize.y * brick.y)/100, brick.width, brick.height, "Brick");
             std::cout << winSize.x / brick.x << std::endl;
             std::cout << winSize.y / brick.y << std::endl;
-            gameObjectManager->AddObject(canon1);
-            _objectsPointer.push_back(canon1);
+            gameObjectManager->AddObject(brick1);
+            _objectsPointer.push_back(brick1);
         }
 
         _isLevelLoaded = true;

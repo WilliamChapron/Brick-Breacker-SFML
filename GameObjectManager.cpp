@@ -1,5 +1,9 @@
 #include "GameObjectManager.h"
 
+
+// #TODO faire texture manager, introduire priorité de draw poru les texture ou les dessin, chaque objet a une priorité pour passer par dessus l'autre pendant le draw
+
+
 GameObjectManager::GameObjectManager() {
     objvect_objects = new std::vector<GameObject*>();
 }
@@ -28,11 +32,6 @@ void GameObjectManager::RemoveObject(GameObject* object) {
         objvect_objects->erase(iterator);
     }
 
-    /*std::cout << "Contenu du vecteur objvect_objects : ";
-    for (GameObject* obj : objvect_objects) {
-        std::cout << obj->GetName() << std::endl;
-    }
-    std::cout << std::endl;*/
 
 }
 

@@ -10,7 +10,6 @@
 class GameObjectManager;
 class CollisionManager;
 
-class GameObjectManager;
 class GameManager;
 
 #include "GameObject.h"
@@ -30,8 +29,10 @@ public:
     // Logic
     void Move();
 
+    virtual void CollisionUpdate();
+
     virtual void CheckCollideState(PhysicalGameObject* object);
-    virtual void OnCollisionEnter();
+    virtual void OnCollisionEnter(GameObject* collideObject);
     virtual void OnCollisionStay();
     virtual void OnCollisionExit();
 

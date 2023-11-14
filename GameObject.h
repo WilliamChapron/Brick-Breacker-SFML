@@ -32,6 +32,7 @@ public:
 
     std::string GetName() const;
 
+    bool GetHasToCollide() const;
     bool GetIsCollidable() const;
 
 
@@ -62,6 +63,7 @@ protected:
     std::string _name;
 
 
+    bool _hasToCollide;
     bool _isCollidable;
 
 private:

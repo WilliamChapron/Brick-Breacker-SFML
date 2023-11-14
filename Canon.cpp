@@ -10,14 +10,11 @@ Canon::Canon() : PhysicalGameObject() {
 
 Canon::Canon(float initialX, float initialY, float width, float height, std::string name) : PhysicalGameObject(initialX, initialY, width, height, name)
 {
+    _hasToCollide = false;
     _isCollidable = false;
     sf::Vector2f origin = this->GetShape()->getOrigin();
-    sf::Vector2f setorigin(width / 2.f, height / 2.f);
-    this->GetShape()->setOrigin(setorigin);
-    //std::cout << this->GetShape()->getOrigin().x << std::endl;
-    //std::cout << this->GetShape()->getOrigin().y << std::endl;
-    //this->SetRotation(this->GetRotation()+90);
-    /*+this->GetWidth() / 2*/
+    sf::Vector2f setOrigin(width / 2.f, height / 2.f);
+    this->GetShape()->setOrigin(setOrigin);
 }
 
 Canon::~Canon() {
@@ -69,16 +66,16 @@ void Canon::Shoot(sf::Vector2f targetPosition, GameObjectManager* gameObjectMana
     float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
 
-    //std::cout << targetPosition.y << std::endl;
-    //std::cout << targetPosition.y << std::endl;
+    //std::cout << canonPosition.x << std::endl;
+    //std::cout << canonPosition.y << std::endl;
 
     if (targetPosition.y <= canonPosition.y - this->GetHeight()) {
         // Normalisation du vecteur de direction
         direction.x /= magnitude;
         direction.y /= magnitude;
-        Ball* objectBall = new Ball(canonPosition.x, canonPosition.y, 25, "Ball");
-        objectBall->SetOrientation(direction.x, direction.y);
-        objectBall->SetSpeed(1500);
+        Ball* objectBall = new Ball(canonPosition.x-10, canonPosition.y, 10, "Ball");
+        objectBall->SetOrientation(direction.x, -1);
+        objectBall->SetSpeed(300);
         gameObjectManager->AddObject(objectBall);
     }
 

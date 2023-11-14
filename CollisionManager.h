@@ -15,6 +15,7 @@ namespace CollisionNamespace {
 
             static bool RectCollision(GameObject* rect1, GameObject* rect2);
             static bool CircleRectCollision(GameObject* circle, GameObject* rect);
+            static int DetectCollisionFace(GameObject* rect1, GameObject* rect2);
 
 
             // TOTHINK - Chunk
