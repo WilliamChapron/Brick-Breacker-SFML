@@ -1,4 +1,6 @@
-#include "CollisionManager.h"
+ï»¿#include "CollisionManager.h"
+#include "GameObject.h"
+#include "PhysicalGameObject.h"
 #include <algorithm>
 #include <iostream>
 
@@ -32,108 +34,105 @@ namespace CollisionNamespace {
 
 
 
-        // Vérification de la collision sur l'axe des x (horizontal)
+        // Vï¿½rification de la collision sur l'axe des x (horizontal)
         bool collisionX = (left1 < right2) && (right1 > left2);
-        // Vérification de la collision sur l'axe des y (vertical)
+        // Vï¿½rification de la collision sur l'axe des y (vertical)
         bool collisionY = (top1 < bottom2) && (bottom1 > top2);
 
-         //Afficher les résultats de collisionX et collisionY
+        // Afficher les rï¿½sultats de collisionX et collisionY
         //std::cout << "CollisionX: " << collisionX << " CollisionY: " << collisionY << std::endl;
 
         // Retourne true si les deux axes de collision sont vrais
         return collisionX && collisionY;
     }
 
-    //#TODO - Utiliser le game object plutot que la shape 
-    bool CollisionManager::CircleRectCollision(GameObject& circle, GameObject& rect) {
-        //sf::Shape* rectShape_ref = rect.GetShape();
-        //sf::Shape* circleShape_ref = circle.GetShape();
 
-        //sf::CircleShape* circleShape = static_cast<sf::CircleShape*>(circleShape_ref);
-        //sf::RectangleShape* rectShape = static_cast<sf::RectangleShape*>(rectShape_ref);
+    bool CollisionManager::CircleRectCollision(GameObject* circle, GameObject* rect) {
 
-        // Circle Informations
-        float circleRadius = circle.GetWidth();
-        std::cout << "Circle Radius: " << circleRadius << std::endl;
+        float circleRadius = circle->GetWidth() / 2.f;
 
-        // Center Position
-        sf::Vector2f circlePosition = circle.GetPosition();
-        std::cout << "Circle Position: (" << circlePosition.x << ", " << circlePosition.y << ")" << std::endl;
+        sf::Vector2f circlePosition = circle->GetPosition();
 
-        // Rectangle Position
-        sf::Vector2f rectPosition = rect.GetPosition();
-        std::cout << "Rectangle Position: (" << rectPosition.x << ", " << rectPosition.y << ")" << std::endl;
+        PhysicalGameObject boundingRect(circlePosition.x, circlePosition.y, 2 * circleRadius, 2 * circleRadius, "Rect");
 
-        // Closest x/y
-        //float closestX = std::max(rectPosition.x, std::min(circlePosition.x, rectPosition.x + rect.GetWidth()));
-        //float closestY = std::max(rectPosition.y, std::min(circlePosition.y, rectPosition.y + rect.GetHeight()));
-        //std::cout << "Closest X: " << closestX << " Closest Y: " << closestY << std::endl;
+        sf::Vector2f circleCenter = circlePosition;
+        circleCenter.x += circle->GetWidth() / 2.f;
+        circleCenter.y += circle->GetHeight() / 2.f;
 
-        //// Distance between closest x/y and circle center // REAL DISTANCE TAKE CARE OF RECT SIZE WITH CLOSEST 
-        //float distance = std::sqrt((circlePosition.x - closestX) * (circlePosition.x - closestX) + (circlePosition.y - closestY) * (circlePosition.y - closestY));
-        //std::cout << "Distance: " << distance << std::endl;
+        sf::Vector2f rectCenter = rect->GetPosition();
+        rectCenter.x += rect->GetWidth() / 2.f;
+        rectCenter.y += rect->GetHeight() / 2.f;
 
+        bool success = RectCollision(rect, &boundingRect);
 
-        float deltaX = circlePosition.x - std::max(rectPosition.x, std::min(circlePosition.x, rectPosition.x + rect.GetWidth()));
-        float deltaY = circlePosition.y - std::max(rectPosition.y, std::min(circlePosition.y, rectPosition.y + rect.GetHeight()));
+        if (success) {
+            float fCircleSizeSqr = circleRadius;
 
-        float deltaXSquared = deltaX * deltaX;
-        float deltaYSquared = deltaY * deltaY;
-        float circleRadiusSquared = circleRadius * circleRadius;
+            float fRectHalfWidth = rect->GetWidth() / 2.f;
+            float fRectHalfHeight = rect->GetHeight() / 2.f;
+            float fRectSizeSqr = sqrt((fRectHalfWidth * fRectHalfWidth) + (fRectHalfHeight * fRectHalfHeight));
 
-        bool collisionX = deltaXSquared <= circleRadiusSquared;
-        bool collisionY = deltaYSquared <= circleRadiusSquared;
+            float fDistanceMaxSqr = fCircleSizeSqr + fRectSizeSqr;
 
-        bool collision = collisionX && collisionY;
+            float fXDistance = std::abs(circleCenter.x - rectCenter.x);
+            float fYDistance = std::abs(circleCenter.y - rectCenter.y);
 
+            float fDistanceSqr = sqrt((fXDistance * fXDistance) + (fYDistance * fYDistance));
 
-        /*if (distance <= circleRadius) {
-            std::cout << "Distance inferieur au circle radius: " << distance << std::endl;
+            if (fDistanceSqr <= fDistanceMaxSqr)
+            {
+                //std::cout << "Circle Collision Check: Success! Collision detected." << std::endl;
+                return true;
+            }
+            else {
+                //std::cout << "Circle Collision Check: Failed. No collision detected." << std::endl;
+            }
         }
-        if (distance >= circleRadius) {
-            std::cout << "Distance superieur au circle radius: " << distance << std::endl;
-        }
-
-        return distance <= circleRadius;*/
-        return collision;
+        return false;
     }
 
+    int CollisionManager::DetectCollisionFace(GameObject* circle, GameObject* rect2) {
+        PhysicalGameObject boundingRect(circle->GetPosition().x, circle->GetPosition().y, 2 * circle->GetWidth(), 2 * circle->GetWidth(), "Rect");
 
+        // Rect of circle
+        float left1 = boundingRect.GetPosition().x;
+        float right1 = left1 + boundingRect.GetWidth();
+        float top1 = boundingRect.GetPosition().y;
+        float bottom1 = top1 + boundingRect.GetHeight();
 
-    bool AreRectanglesColliding(const sf::FloatRect& rect1, const sf::FloatRect& rect2) {
-        return rect1.intersects(rect2);
-    }
+        // Rect of rect
+        float left2 = rect2->GetPosition().x;
+        float right2 = left2 + rect2->GetWidth();
+        float top2 = rect2->GetPosition().y;
+        float bottom2 = top2 + rect2->GetHeight();
 
-    CollisionFace CollisionManager::DetectCollisionFace(const sf::FloatRect& rect1, const sf::FloatRect& rect2) {
-        // Utilisez la fonction fournie pour détecter la face de collision
-        if (!AreRectanglesColliding(rect1, rect2)) {
-            return CollisionFace::None;
-        }
+        float overlapLeft = right1 - left2;
+        float overlapRight = right2 - left1;
+        float overlapTop = bottom1 - top2;
+        float overlapBottom = bottom2 - top1;
 
-        float overlapLeft = rect2.left + rect2.width - rect1.left;
-        float overlapRight = rect1.left + rect1.width - rect2.left;
-        float overlapTop = rect2.top + rect2.height - rect1.top;
-        float overlapBottom = rect1.top + rect1.height - rect2.top;
 
         float minOverlap = std::min({ overlapLeft, overlapRight, overlapTop, overlapBottom });
 
+
+
         if (minOverlap == overlapLeft) {
-            return CollisionFace::Left;
+            //std::cout << "Left " << std::endl;
+            return 1;
         }
         else if (minOverlap == overlapRight) {
-            return CollisionFace::Right;
+            //std::cout << "Right " << std::endl;
+            return 2;
         }
         else if (minOverlap == overlapTop) {
-            return CollisionFace::Top;
+            //std::cout << "Top " << std::endl;
+            return 3;
         }
-        else {
-            return CollisionFace::Bottom;
+        else if (minOverlap == overlapBottom) {
+            //std::cout << "Bottom " << std::endl;
+            return 4;
         }
     }
-
-
-
-
-
 }
 
+// #TODO Make Chunk between position

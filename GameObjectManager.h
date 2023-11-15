@@ -13,15 +13,15 @@ public:
     GameObjectManager();
     ~GameObjectManager();
 
-    void Update(GameObjectManager * gameObjectManager);
+    void Update(GameObjectManager* gameObjectManager);
 
     void AddObject(GameObject* object);
 
     void RemoveObject(GameObject* object);
 
-    std::vector<GameObject*> * FindObjectsByName(std::string name);
+    std::vector<GameObject*>* FindObjectsByName(std::string name);
 
-    std::vector<GameObject*> * GetAllObjects();
+    std::vector<GameObject*>* GetAllObjects();
 
 
     int GetObjectsNumber();
@@ -29,5 +29,5 @@ public:
     void Clear();
 
 private:
-    std::vector<GameObject*> * objvect_objects;
+    std::vector<GameObject*>* objvect_objects;
 };

@@ -1,4 +1,8 @@
-#include "GameObjectManager.h"
+﻿#include "GameObjectManager.h"
+
+
+// #TODO faire texture manager, introduire priorit� de draw poru les texture ou les dessin, chaque objet a une priorit� pour passer par dessus l'autre pendant le draw
+
 
 GameObjectManager::GameObjectManager() {
     objvect_objects = new std::vector<GameObject*>();
@@ -18,26 +22,21 @@ void GameObjectManager::AddObject(GameObject* object) {
     if (objvect_objects->size() < RendererManager::maxObjects) {
         objvect_objects->push_back(object);
     }
-    
+
 }
 
 void GameObjectManager::RemoveObject(GameObject* object) {
     auto iterator = std::find(objvect_objects->begin(), objvect_objects->end(), object); // Return objvect_objects.end() if not finded
     if (iterator != objvect_objects->end()) {
-        delete object;  
+        delete object;
         objvect_objects->erase(iterator);
     }
 
-    /*std::cout << "Contenu du vecteur objvect_objects : ";
-    for (GameObject* obj : objvect_objects) {
-        std::cout << obj->GetName() << std::endl;
-    }
-    std::cout << std::endl;*/
 
 }
 
-std::vector<GameObject*> * GameObjectManager::FindObjectsByName(std::string name) {
-    std::vector<GameObject*> * objectsByName = new std::vector<GameObject*>();
+std::vector<GameObject*>* GameObjectManager::FindObjectsByName(std::string name) {
+    std::vector<GameObject*>* objectsByName = new std::vector<GameObject*>();
     for (GameObject* object : *objvect_objects) {
         if (object->GetName() == name) {
             objectsByName->push_back(object);
@@ -46,7 +45,7 @@ std::vector<GameObject*> * GameObjectManager::FindObjectsByName(std::string name
     return objectsByName;
 }
 
-std::vector<GameObject*> * GameObjectManager::GetAllObjects() {
+std::vector<GameObject*>* GameObjectManager::GetAllObjects() {
     return objvect_objects;
 }
 

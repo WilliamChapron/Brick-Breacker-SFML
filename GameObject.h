@@ -27,11 +27,12 @@ public:
     sf::Vector2f GetPosition() const;
     sf::Shape* GetShape();
     sf::Shape* GetShape() const;
-    int GetWidth() const;
-    int GetHeight() const;
+    int GetWidth();
+    int GetHeight();
 
     std::string GetName() const;
 
+    bool GetHasToCollide() const;
     bool GetIsCollidable() const;
 
 
@@ -50,9 +51,7 @@ public:
     virtual void SetRotation(float angle);
     virtual int GetRotation() const;
 
-    /*virtual void HandleCollision();*/
-
-// Accessible by child
+    // Accessible by child
 protected:
     sf::Shape* ptr_shape;
     // Size
@@ -64,12 +63,12 @@ protected:
     std::string _name;
 
 
+    bool _hasToCollide;
     bool _isCollidable;
 
 private:
 
 };
-
 
 
 

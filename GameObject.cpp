@@ -12,8 +12,8 @@ GameObject::GameObject(float initialX, float initialY, int sizeW, int sizeH, std
 }
 
 GameObject::GameObject(float initialX, float initialY, int radius, std::string name) {
-    sf::CircleShape* newShape = new sf::CircleShape(radius,radius);
-    Initialize(initialX, initialY, radius, radius, name, newShape);
+    sf::CircleShape* newShape = new sf::CircleShape(radius);
+    Initialize(initialX, initialY, radius * 2, radius * 2, name, newShape);
 
 }
 
@@ -62,14 +62,13 @@ sf::Vector2f GameObject::GetPosition() const {
     return _position;
 }
 
-int GameObject::GetWidth() const {
+int GameObject::GetWidth() {
     return _width;
 }
 
-int GameObject::GetHeight() const {
+int GameObject::GetHeight() {
     return _height;
 }
-
 
 std::string GameObject::GetName() const {
     return _name;
@@ -96,6 +95,10 @@ void GameObject::SetRotation(float angle) {
 
 int GameObject::GetRotation() const {
     return ptr_shape->getRotation();
+}
+
+bool GameObject::GetHasToCollide() const {
+    return _hasToCollide;
 }
 
 bool GameObject::GetIsCollidable() const {

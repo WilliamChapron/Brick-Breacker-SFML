@@ -1,17 +1,19 @@
 #pragma once
 
 #include "PhysicalGameObject.h"
-#include "CollisionManager.h"
+class CollisionManager;
 
 class Ball : public PhysicalGameObject {
 public:
-    // Constructors
+    // Constructor
     Ball();
     Ball(float initialX, float initialY, float radius, std::string name);
-
-    // Destructor
     ~Ball();
+
+    void OnCollisionEnter(GameObject* collideObject) override; // Bouncing ball 
 
 
 private:
+    bool _shouldBounce;
 };
+
