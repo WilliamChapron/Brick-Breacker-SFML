@@ -3,11 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 
-#include "GameObject.h"
 #include "PhysicalGameObject.h"
-#include "CollisionManager.h"
-#include "GameManager.h"
-#include "GameObjectManager.h"
 
 
 

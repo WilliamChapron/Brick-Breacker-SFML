@@ -1,21 +1,21 @@
 #pragma once
 
 #include <SFML/System/Vector2.hpp>
-
-//namespace sf
-//{
-//    class Vector2f;
-//}
+#include "GameObject.h"
+#include "GameObject.h"
+#include "Brick.h"
+#include "CollisionManager.h"
+#include "GameManager.h"
+#include "GameObjectManager.h"
+#include <vector>
+#include <string>
 
 class GameObjectManager;
 class CollisionManager;
 
 class GameManager;
 
-#include "GameObject.h"
 
-#include <vector>
-#include <string>
 
 class PhysicalGameObject : public GameObject {
 public:
@@ -31,7 +31,7 @@ public:
 
     virtual void CollisionUpdate();
 
-    virtual void CheckCollideState(PhysicalGameObject* object);
+    void CheckCollideState(PhysicalGameObject* object);
     virtual void OnCollisionEnter(GameObject* collideObject);
     virtual void OnCollisionStay();
     virtual void OnCollisionExit();

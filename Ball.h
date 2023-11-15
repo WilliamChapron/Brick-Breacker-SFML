@@ -1,6 +1,10 @@
 #pragma once
 
 #include "PhysicalGameObject.h"
+#include "CollisionManager.h"
+#include "GameObject.h"
+#include "Brick.h"
+
 class CollisionManager;
 
 class Ball : public PhysicalGameObject {

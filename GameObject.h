@@ -20,7 +20,6 @@ public:
     virtual void Render();
 
 
-
     /*
         Get
     */
