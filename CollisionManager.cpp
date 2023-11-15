@@ -117,19 +117,19 @@ namespace CollisionNamespace {
 
 
         if (minOverlap == overlapLeft) {
-            //std::cout << "Left " << std::endl;
+            std::cout << "Left " << std::endl;
             return 1;
         }
         else if (minOverlap == overlapRight) {
-            //std::cout << "Right " << std::endl;
+            std::cout << "Right " << std::endl;
             return 2;
         }
         else if (minOverlap == overlapTop) {
-            //std::cout << "Top " << std::endl;
+            std::cout << "Top " << std::endl;
             return 3;
         }
         else if (minOverlap == overlapBottom) {
-            //std::cout << "Bottom " << std::endl;
+            std::cout << "Bottom " << std::endl;
             return 4;
         }
     }

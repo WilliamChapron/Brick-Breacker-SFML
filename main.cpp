@@ -55,9 +55,9 @@ int main(int argc, char** argv) {
 
 
 
-    //Ball* ball1 = new Ball(300, 100, 5, "Ball");
+    //Ball* ball1 = new Ball(300, 100, 10, "Ball");
 
-    Canon* canon1 = new Canon(450, 750, 200, 100, "Canon");
+    Canon* canon1 = new Canon(450, 750, 100, 50, "Canon");
     canon1->GetShape()->setFillColor(sf::Color::Red);
 
     Border* border1 = new Border(0, 0, 15, rendererManager->GetWinHeight(), "Border");
@@ -101,14 +101,14 @@ int main(int argc, char** argv) {
             //clicked = true;
             //ball1->SetPosition(mousePosF.x, mousePosF.y);
             //ball1->SetSpeed(100);
-            //ball1->SetOrientation(-1,-1);
+            //ball1->SetOrientation(1,-1);
 
         }
 
-        /*if (clicked == false)
-        {
-            ball1->SetPosition(mousePosF.x, mousePosF.y);
-        }*/
+        //if (clicked == false)
+        //{
+        //    ball1->SetPosition(mousePosF.x, mousePosF.y);
+        //}
 
         //brick1->SetPosition(mousePosF.x, mousePosF.y);
         //brick1->SetPosition(mousePosF.x, mousePosF.y);

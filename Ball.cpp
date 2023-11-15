@@ -30,46 +30,142 @@ void Ball::OnCollisionEnter(GameObject* collideObject) {
     sf::Vector2f orientation = GetOrientation();
     //std::cout << "bouncing ball" << std::endl;
 
-
-    // # TODO Regler probl�me de cas sp�cial en top et left sa fait le probl�me en plus de right et bottom, probl�me de partout, tout d'abord faire 8 conditions, 
-
-    // Left Right Case
-    if (faceState <= 2) {
-        //std::cout << faceState << std::endl;
-        if (faceState == 2 && orientation.x == 1 && orientation.y == 1) {
-            std::cout << "cas sp�cial" << std::endl;
-            orientation.x = 1;
-            orientation.y = -1;
-        }
-        else {
-            //std::cout << "normal" << std::endl;
+    ///// Face == Left
+    if (faceState == 1) 
+    {
+        if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= -1 && orientation.y <= 0)
+        {
+    
             orientation.x *= -1;
+            orientation.y *= 1;
         }
-        // Axe y don't move
 
-        /*orientation.y = current*/
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= 0 && orientation.y <= 1)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
 
-        // Axe x inverse
+        else if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= 0 && orientation.y <= 1)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
+
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= -1 && orientation.y <= 0)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
+
+
     }
-    // Top Down case
-    if (faceState > 2) {
-        if (faceState == 4 && orientation.x == 1 && orientation.y == 1) {
-            std::cout << "cas sp�cial" << std::endl;
-            orientation.x = -1;
-            orientation.y = 1;
+
+
+
+
+    ///// Face == Right
+    if (faceState == 2) 
+    {
+        if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= -1 && orientation.y <= 0)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
         }
-        else {
-            //std::cout << "normal" << std::endl;
+
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= 0 && orientation.y <= 1)
+        {
+    
+            orientation.x *= 1;
             orientation.y *= -1;
         }
-        // Axe x don't move
 
-        /*orientation.x = current */
+        else if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= 0 && orientation.y <= 1)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
 
-        // Axe y inverse
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= -1 && orientation.y <= 0)
+        {
+    
+            orientation.x *= 1;
+            orientation.y *= -1;
+        }
 
     }
-    SetOrientation(orientation.x, orientation.y);
+   
+
+
+    /////Face == Top
+    if (faceState == 3) 
+    {
+        if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= -1 && orientation.y <= 0)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
+
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= 0 && orientation.y <= 1)
+        {
+    
+            orientation.x *= 1;
+            orientation.y *= -1;
+        }
+
+        else if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= 0 && orientation.y <= 1)
+        {
+    
+            orientation.x *= 1;
+            orientation.y *= -1;
+        }
+
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= -1 && orientation.y <= 0)
+        {
+    
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
+
+    }
+   
+
+
+    /////Face == Bottom
+    if (faceState == 4)
+    {
+        if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= -1 && orientation.y <= 0)
+        {
+            orientation.x *= 1;
+            orientation.y *= -1;
+        }
+
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= 0 && orientation.y <= 1)
+        {
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
+
+        else if (orientation.x >= -1 && orientation.x <= 0 && orientation.y >= 0 && orientation.y <= 1)
+        {
+            orientation.x *= -1;
+            orientation.y *= 1;
+        }
+
+        else if (orientation.x >= 0 && orientation.x <= 1 && orientation.y >= -1 && orientation.y <= 0)
+        {
+            orientation.x *= 1;
+            orientation.y *= -1;
+        }
+    }
+
+   SetOrientation(orientation.x, orientation.y);
 }
 
 
