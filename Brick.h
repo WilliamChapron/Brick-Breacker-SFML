@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+class GameObjectManager;
 
 class Brick : public GameObject {
 public:
@@ -7,6 +8,8 @@ public:
     Brick();
     Brick(float initialX, float initialY, float width, float height, std::string name, int initialHealth = 3);
     ~Brick();
+
+    void Update(GameObjectManager* gameObjectManager) override;
 
     /*
         Get / Set

@@ -47,15 +47,6 @@ int main(int argc, char** argv) {
     levelManager.Initialize();
     levelManager.LoadLevel(gameObjectManager, rendererManager->GetWindow());
 
-    //Brick* brick1 = new Brick(500, 500, 300, 300, "Brick");
-    //gameObjectManager->AddObject(brick1);
-
-
-
-
-
-
-    //Ball* ball1 = new Ball(300, 100, 10, "Ball");
 
     Canon* canon1 = new Canon(450, 750, 100, 50, "Canon");
     canon1->GetShape()->setFillColor(sf::Color::Red);
@@ -71,8 +62,6 @@ int main(int argc, char** argv) {
 
     gameObjectManager->AddObject(canon1);
 
-    //gameObjectManager->AddObject(ball1);
-
 
 
 
@@ -84,7 +73,6 @@ int main(int argc, char** argv) {
     // GameLoop
     bool clicked = false;
     while (rendererManager->GetWindow()->isOpen()) {
-        /*ball1->SetOrientation(1,0);*/
 
 
 
@@ -98,25 +86,9 @@ int main(int argc, char** argv) {
 
         if (inputManager.Update(rendererManager->GetWindow()) == 1) {
             canon1->Shoot(mousePosF, gameObjectManager);
-            //clicked = true;
-            //ball1->SetPosition(mousePosF.x, mousePosF.y);
-            //ball1->SetSpeed(100);
-            //ball1->SetOrientation(1,-1);
-
         }
 
-        //if (clicked == false)
-        //{
-        //    ball1->SetPosition(mousePosF.x, mousePosF.y);
-        //}
-
-        //brick1->SetPosition(mousePosF.x, mousePosF.y);
-        //brick1->SetPosition(mousePosF.x, mousePosF.y);
-
-
-
-
-
+        // Manager Update
         rendererManager->Update(entitiesAlive);
         GameNamespace::GameManager::Update();
         gameObjectManager->Update(gameObjectManager);

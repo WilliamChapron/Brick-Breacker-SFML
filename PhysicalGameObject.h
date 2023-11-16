@@ -26,6 +26,8 @@ public:
 
 
     void Update(GameObjectManager* gameObjectManager) override;
+
+
     // Logic
     void Move();
 

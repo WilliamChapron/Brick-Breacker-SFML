@@ -12,6 +12,8 @@ Canon::Canon(float initialX, float initialY, float width, float height, std::str
 {
     _hasToCollide = false;
     _isCollidable = false;
+    aliveBallLimit = 1;
+
     sf::Vector2f origin = this->GetShape()->getOrigin();
     sf::Vector2f setOrigin(width / 2.f, height / 2.f);
     this->GetShape()->setOrigin(setOrigin);
@@ -60,24 +62,23 @@ void Canon::RotateTowardsMouse(sf::Vector2i mousePosition) {
 
 void Canon::Shoot(sf::Vector2f targetPosition, GameObjectManager* gameObjectManager) {
 
+    if (gameObjectManager->FindObjectsByName("Ball")->size() < aliveBallLimit) {
+        sf::Vector2f canonPosition = this->GetPosition();
+        sf::Vector2f direction = targetPosition - canonPosition;
+        float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
-    sf::Vector2f canonPosition = this->GetPosition();
-    sf::Vector2f direction = targetPosition - canonPosition;
-    float magnitude = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
-
-    //std::cout << canonPosition.x << std::endl;
-    //std::cout << canonPosition.y << std::endl;
-
-    if (targetPosition.y <= canonPosition.y - this->GetHeight()) {
-        // Normalisation du vecteur de direction
-        direction.x /= magnitude;
-        direction.y /= magnitude;
-        Ball* objectBall = new Ball(canonPosition.x - 10, canonPosition.y, 10, "Ball");
-        objectBall->SetOrientation(direction.x, -1);
-        objectBall->SetSpeed(300);
-        gameObjectManager->AddObject(objectBall);
+        if (targetPosition.y <= canonPosition.y - this->GetHeight()) {
+            // Normalisation du vecteur de direction
+            direction.x /= magnitude;
+            direction.y /= magnitude;
+            Ball* objectBall = new Ball(canonPosition.x - 10, canonPosition.y, 10, "Ball");
+            objectBall->SetOrientation(direction.x, -1);
+            objectBall->SetSpeed(300);
+            gameObjectManager->AddObject(objectBall);
+        }
     }
+    
 
 
 

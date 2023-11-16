@@ -1,4 +1,5 @@
 #include "Brick.h"
+#include "GameObjectManager.h"
 
 Brick::Brick() : GameObject(), _health(3) {
 }
@@ -12,6 +13,13 @@ Brick::Brick(float initialX, float initialY, float width, float height, std::str
 Brick::~Brick() {
 }
 
+void Brick::Update(GameObjectManager* gameObjectManager) {
+
+    if (_health <= 0) {
+        gameObjectManager->RemoveObject(this);
+    }
+}
+
 void Brick::SetHealth(int health) {
     _health = health;
 }
@@ -19,11 +27,8 @@ void Brick::SetHealth(int health) {
 void Brick::RemoveHealth(int amount) {
     _health -= amount;
 
-    // Check if the brick is destroyed
-    if (_health <= 0) {
-        _hasToCollide = false;
-        _isCollidable = false;
-    }
+    //check if the brick is destroyed
+    
 }
 
 int Brick::GetHealth() const {

@@ -1,5 +1,7 @@
 #include "GameObject.h"
 #include "GameObjectManager.h"
+#include "RendererManager.h"
+
 
 GameObject::GameObject() {
     Initialize(0.0f, 0.0f, 1, 1, "", nullptr);
@@ -47,10 +49,12 @@ sf::Shape* GameObject::GetShape() const {
 
 
 void GameObject::Update(GameObjectManager* gameObjectManager) {
+    // Clear object out screen
+    if (_position.x < 0 || _position.x > RendererManager::_winWidth || _position.y < 0 || _position.y > RendererManager::_winHeight) {
+        gameObjectManager->RemoveObject(this);
+    }
 }
 
-void GameObject::Render() {
-}
 
 void GameObject::SetPosition(float x, float y) {
     _position.x = x;

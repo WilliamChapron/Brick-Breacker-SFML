@@ -2,6 +2,7 @@
 
 #include <SFML/Graphics.hpp>
 class GameObjectManager;
+class RendererManager;
 
 class GameObject {
 public:
@@ -17,7 +18,6 @@ public:
     // Base Methods
     virtual void Initialize(float initialX, float initialY, int sizeW, int sizeH, std::string name, sf::Shape* shape);
     virtual void Update(GameObjectManager* gameObjectManager);
-    virtual void Render();
 
 
     /*

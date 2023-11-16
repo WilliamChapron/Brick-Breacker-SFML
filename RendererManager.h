@@ -24,8 +24,10 @@ public:
 
     static const int maxObjects = 100;
 
+    static int _winWidth;
+    static int _winHeight;
+
 private:
     sf::RenderWindow* sf_window;
-    int _winWidth;
-    int _winHeight;
+
 };

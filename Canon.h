@@ -17,6 +17,7 @@ public:
     void Shoot(sf::Vector2f targetPosition, GameObjectManager* gameObjectManager);
 
 private:
+    bool aliveBallLimit;
 
 };
 

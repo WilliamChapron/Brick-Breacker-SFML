@@ -33,10 +33,6 @@ void PhysicalGameObject::Move()
     _position.x += _speed * _orientation.x * GameNamespace::GameManager::GetDeltaTime();
     _position.y += _speed * _orientation.y * GameNamespace::GameManager::GetDeltaTime();
 
-    //std::cout << "New Position: (" << _position.x << ", " << _position.y << ")" << std::endl;
-
-    //std::cout << _position.x<< std::endl;
-    //std::cout << _position.y << std::endl;
 
     if (ptr_shape != nullptr) {
         ptr_shape->setPosition(_position);
@@ -44,8 +40,12 @@ void PhysicalGameObject::Move()
 }
 
 void PhysicalGameObject::Update(GameObjectManager* gameObjectManager) {
-    //std::cout << "Update physical game object" << std::endl;
-    //Move();
+
+
+    // Clear object out screen
+    if (_position.x < 0 || _position.x > RendererManager::_winWidth || _position.y < 0 || _position.y > RendererManager::_winHeight) {
+        gameObjectManager->RemoveObject(this);
+    }
 
     Move();
 

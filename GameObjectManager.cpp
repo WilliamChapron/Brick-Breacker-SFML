@@ -28,8 +28,9 @@ void GameObjectManager::AddObject(GameObject* object) {
 void GameObjectManager::RemoveObject(GameObject* object) {
     auto iterator = std::find(objvect_objects->begin(), objvect_objects->end(), object); // Return objvect_objects.end() if not finded
     if (iterator != objvect_objects->end()) {
-        delete object;
         objvect_objects->erase(iterator);
+        std::cout << "erase" << std::endl;
+        /*delete object;*/
     }
 
 
