@@ -16,12 +16,12 @@ PhysicalGameObject::PhysicalGameObject() : GameObject() {
 
 
 PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int sizeW, int sizeH, std::string name) : GameObject(initialX, initialY, sizeW, sizeH, name) {
-    _orientation = sf::Vector2f(-1, 1);
+    _orientation = sf::Vector2f(0, 0);
 }
 
 
 PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int radius, std::string name) : GameObject(initialX, initialY, radius, name) {
-    _orientation = sf::Vector2f(-1, 1);
+    _orientation = sf::Vector2f(0, 0);
 }
 
 
@@ -29,6 +29,15 @@ PhysicalGameObject::PhysicalGameObject(float initialX, float initialY, int radiu
 
 void PhysicalGameObject::Move()
 {
+
+    // calculate norm 
+    float magnitude = std::sqrt(_orientation.x * _orientation.x + _orientation.y * _orientation.y);
+
+    // normalize orientations
+    if (magnitude != 0) {
+        _orientation.x /= magnitude;
+        _orientation.y /= magnitude;
+    }
 
     _position.x += _speed * _orientation.x * GameNamespace::GameManager::GetDeltaTime();
     _position.y += _speed * _orientation.y * GameNamespace::GameManager::GetDeltaTime();
@@ -45,6 +54,7 @@ void PhysicalGameObject::Update(GameObjectManager* gameObjectManager) {
     // Clear object out screen
     if (_position.x < 0 || _position.x > RendererManager::_winWidth || _position.y < 0 || _position.y > RendererManager::_winHeight) {
         gameObjectManager->RemoveObject(this);
+        return;
     }
 
     Move();
@@ -91,8 +101,8 @@ void PhysicalGameObject::CheckCollideState(PhysicalGameObject* object) {
         }
         // Object Begin Collide
         else {
-            std::cout << "OnCollisionEnter" << std::endl;
-            std::cout << "--" << std::endl;
+            //std::cout << "OnCollisionEnter" << std::endl;
+            //std::cout << "--" << std::endl;
             OnCollisionEnter(object);
             objvect_collisionObject.push_back(object);
         }

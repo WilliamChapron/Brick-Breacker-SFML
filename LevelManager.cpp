@@ -57,8 +57,8 @@ void LevelManager::LoadLevel(GameObjectManager* gameObjectManager, sf::RenderWin
 
         for (const Rect brick : bricks) {
             Brick* brick1 = new Brick((winSize.x * brick.x) / 100, (winSize.y * brick.y) / 100, brick.width, brick.height, "Brick");
-            std::cout << winSize.x / brick.x << std::endl;
-            std::cout << winSize.y / brick.y << std::endl;
+            //std::cout << winSize.x / brick.x << std::endl;
+            //std::cout << winSize.y / brick.y << std::endl;
             gameObjectManager->AddObject(brick1);
             _objectsPointer.push_back(brick1);
         }

@@ -9,6 +9,7 @@ namespace GameNamespace {
     float GameManager::_gameTimeElapsed = 0.0f;
     float GameManager::_targetFrameTime = 1.0f / 60.0f;
     int GameManager::_score = 0;
+    int GameManager::_ballUsed = 0;
     sf::Clock* GameManager::sf_clock = new sf::Clock;
 
     GameManager::GameManager() {

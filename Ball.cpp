@@ -10,7 +10,7 @@ Ball::Ball() : PhysicalGameObject() {
 
 Ball::Ball(float initialX, float initialY, float radius, std::string name) : PhysicalGameObject(initialX, initialY, radius, name)
 {
-    _speed = 100;
+    _speed = 700;
     _moveState = 1;
     _hasToCollide = true;
     _isCollidable = true;

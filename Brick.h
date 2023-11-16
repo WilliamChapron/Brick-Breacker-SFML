@@ -1,5 +1,9 @@
 #pragma once
 #include "GameObject.h"
+
+namespace GameNamespace {
+    class GameManager;
+}
 class GameObjectManager;
 
 class Brick : public GameObject {
@@ -15,11 +19,10 @@ public:
         Get / Set
     */
     void SetHealth(int health);
-    void RemoveHealth(int amount = 1);
+    void RemoveHealth(int amount);
     int GetHealth() const;
 
 private:
     int _health;
 
-    // TO THINK - Brick Color
 };

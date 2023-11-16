@@ -35,20 +35,16 @@
 
 
 int main(int argc, char** argv) {
-    RendererManager* rendererManager = new RendererManager(1000, 1000);
+    RendererManager* rendererManager = new RendererManager(1920, 1080);
 
     GameObjectManager* gameObjectManager = new GameObjectManager;
 
 
 
-    InputManager inputManager;
-    LevelManager levelManager;
-
-    levelManager.Initialize();
-    levelManager.LoadLevel(gameObjectManager, rendererManager->GetWindow());
 
 
-    Canon* canon1 = new Canon(450, 750, 100, 50, "Canon");
+
+    Canon* canon1 = new Canon(960, 950, 100, 50, "Canon");
     canon1->GetShape()->setFillColor(sf::Color::Red);
 
     Border* border1 = new Border(0, 0, 15, rendererManager->GetWinHeight(), "Border");
@@ -61,6 +57,12 @@ int main(int argc, char** argv) {
     gameObjectManager->AddObject(border3);
 
     gameObjectManager->AddObject(canon1);
+
+    InputManager inputManager;
+    LevelManager levelManager;
+
+    levelManager.Initialize();
+    levelManager.LoadLevel(gameObjectManager, rendererManager->GetWindow());
 
 
 
@@ -92,7 +94,17 @@ int main(int argc, char** argv) {
         rendererManager->Update(entitiesAlive);
         GameNamespace::GameManager::Update();
         gameObjectManager->Update(gameObjectManager);
+
+        if (gameObjectManager->FindObjectsByName("Brick")->size() == 0) {
+            std::cout << "Game Over, No more brick" << std::endl;
+            return 1;
+        }
     }
+
+    delete gameObjectManager;
+    delete rendererManager;
+
+
 
     // # TODO Delete Memory
 

@@ -5,6 +5,10 @@
 class Ball;
 class GameObjectManager;
 
+namespace GameNamespace {
+    class GameManager;
+}
+
 class Canon : public PhysicalGameObject {
 public:
     // Constructor

@@ -1,5 +1,6 @@
 #include "Brick.h"
 #include "GameObjectManager.h"
+#include "GameManager.h"
 
 Brick::Brick() : GameObject(), _health(3) {
 }
@@ -17,6 +18,18 @@ void Brick::Update(GameObjectManager* gameObjectManager) {
 
     if (_health <= 0) {
         gameObjectManager->RemoveObject(this);
+        int calculScore = GameNamespace::GameManager::_score + 100 / GameNamespace::GameManager::_ballUsed;
+        GameNamespace::GameManager::_score = calculScore;
+        std::cout << "score" << GameNamespace::GameManager::_score << std::endl;
+    }
+    if (_health == 1) {
+        ptr_shape->setFillColor(sf::Color::Red);
+    }
+    if (_health == 2) {
+        ptr_shape->setFillColor(sf::Color::Yellow);
+    }
+    if (_health == 3) {
+        ptr_shape->setFillColor(sf::Color::Green);
     }
 }
 

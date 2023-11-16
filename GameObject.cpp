@@ -21,6 +21,7 @@ GameObject::GameObject(float initialX, float initialY, int radius, std::string n
 
 
 GameObject::~GameObject() {
+    delete ptr_shape;
 }
 
 void GameObject::Initialize(float initialX, float initialY, int sizeW, int sizeH, std::string name, sf::Shape* shape) {

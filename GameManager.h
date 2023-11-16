@@ -73,7 +73,6 @@ namespace GameNamespace {
             _score = score;
         }
 
-    private:
         static float _deltaTime;
         static float _gameSpeed;
         static bool _isGamePaused;
@@ -81,7 +80,9 @@ namespace GameNamespace {
         static float _gameTimeElapsed;
         static float _targetFrameTime;
         static int _score;
-
+        static int _ballUsed;
         static sf::Clock* sf_clock;
+
+    private:
     };
 }
