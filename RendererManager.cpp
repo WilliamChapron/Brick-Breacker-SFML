@@ -6,13 +6,15 @@
 int RendererManager::_winWidth;
 int RendererManager::_winHeight;
 
-RendererManager::RendererManager(int width, int height) {
+RendererManager::RendererManager(int width, int height) 
+{
     sf_window = new sf::RenderWindow(sf::VideoMode(width, height), "SFML Window");
     RendererManager::_winWidth = width;
     RendererManager::_winHeight = height;
 }
 
-RendererManager::~RendererManager() {
+RendererManager::~RendererManager() 
+{
     delete sf_window;
 }
 
@@ -20,11 +22,13 @@ void RendererManager::Initialize() {
 }
 
 
-void RendererManager::Update(std::vector<GameObject*> * aliveObjects) {
+void RendererManager::Update(std::vector<GameObject*> * aliveObjects) 
+{
     Draw(aliveObjects);
 }
 
-void RendererManager::Draw(std::vector<GameObject*> * aliveObjects) {
+void RendererManager::Draw(std::vector<GameObject*> * aliveObjects) 
+{
     sf_window->clear();
 
     for (const GameObject* object : *aliveObjects) {
@@ -35,14 +39,17 @@ void RendererManager::Draw(std::vector<GameObject*> * aliveObjects) {
     sf_window->display();
 }
 
-sf::RenderWindow* RendererManager::GetWindow() const {
+sf::RenderWindow* RendererManager::GetWindow() const 
+{
     return sf_window;
 
 }
-int RendererManager::GetWinWidth() {
+int RendererManager::GetWinWidth()
+{
     return _winWidth;
 }
 
-int RendererManager::GetWinHeight() {
+int RendererManager::GetWinHeight() 
+{
     return _winHeight;
 }

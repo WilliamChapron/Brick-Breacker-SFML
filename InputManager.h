@@ -1,5 +1,5 @@
 #pragma once
-
+#include "RendererManager.h"
 
 class RendererManager;
 #include <SFML/Graphics.hpp>

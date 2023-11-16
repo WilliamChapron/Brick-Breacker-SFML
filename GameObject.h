@@ -1,4 +1,6 @@
 #pragma once
+#include "GameObjectManager.h"
+#include "RendererManager.h"
 
 #include <SFML/Graphics.hpp>
 class GameObjectManager;

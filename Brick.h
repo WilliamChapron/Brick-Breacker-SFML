@@ -1,5 +1,7 @@
 #pragma once
 #include "GameObject.h"
+#include "GameObjectManager.h"
+#include "GameManager.h"
 
 namespace GameNamespace {
     class GameManager;

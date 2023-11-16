@@ -1,4 +1,6 @@
 #pragma once
+#include "GameObject.h"
+#include "PhysicalGameObject.h"
 
 class PhysicalGameObject;
 class GameObject;

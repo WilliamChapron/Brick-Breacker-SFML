@@ -55,9 +55,6 @@
     <ClCompile Include="PhysicalGameObject.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
-    <ClCompile Include="TextureManager.cpp">
-      <Filter>Fichiers de ressources\src\Managers</Filter>
-    </ClCompile>
     <ClCompile Include="Canon.cpp">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
     </ClCompile>
@@ -96,9 +93,6 @@
     </ClInclude>
     <ClInclude Include="PhysicalGameObject.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureManager.h">
-      <Filter>Fichiers de ressources\src\Managers</Filter>
     </ClInclude>
     <ClInclude Include="Canon.h">
       <Filter>Fichiers de ressources\src\GameObjects</Filter>

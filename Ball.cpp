@@ -3,13 +3,14 @@
 #include <string>
 #include <iostream>
 
-
-Ball::Ball() : PhysicalGameObject() {
-
+Ball::Ball() : PhysicalGameObject() 
+{
+    // Default constructor for Ball, inheriting from PhysicalGameObject
 }
 
-Ball::Ball(float initialX, float initialY, float radius, std::string name) : PhysicalGameObject(initialX, initialY, radius, name)
+Ball::Ball(float initialX, float initialY, float radius, std::string name) : PhysicalGameObject(initialX, initialY, radius, name) 
 {
+    // Constructor for Ball with specified parameters, inheriting from PhysicalGameObject
     _speed = 700;
     _moveState = 1;
     _hasToCollide = true;
@@ -17,21 +18,19 @@ Ball::Ball(float initialX, float initialY, float radius, std::string name) : Phy
     _shouldBounce = false;
 }
 
-
-
-
 void Ball::OnCollisionEnter(GameObject* collideObject) 
 {
+    // Event called when the ball collides with an object
+
+    // Detect the face of collision
     int faceState = CollisionNamespace::CollisionManager::DetectCollisionFace(this, collideObject);
     sf::Vector2f orientation = GetOrientation();
 
-
-    
-
+    // Convert the colliding object to Brick type
     Brick* brickObject = static_cast<Brick*>(collideObject);
 
+    // Remove one health from the brick
     brickObject->RemoveHealth(1);
-
     //std::cout << "Brick health after collision: " << brick->GetHealth() << std::endl;
 
         
@@ -176,6 +175,7 @@ void Ball::OnCollisionEnter(GameObject* collideObject)
 
 
 
-Ball::~Ball() {
-
+Ball::~Ball() 
+{
+    // Destructor for Ball
 }

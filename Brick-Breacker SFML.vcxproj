@@ -148,7 +148,6 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="RendererManager.cpp" />
-    <ClCompile Include="TextureManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Ball.h" />
@@ -164,7 +163,6 @@
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="LevelManager.h" />
     <ClInclude Include="RendererManager.h" />
-    <ClInclude Include="TextureManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitattributes" />
